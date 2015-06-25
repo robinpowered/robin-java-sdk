@@ -1,4 +1,5 @@
 # Robin Java SDK
+[![Build Status](https://travis-ci.org/robinpowered/robin-java-sdk.svg?branch=master)](https://travis-ci.org/robinpowered/robin-java-sdk)
 
 This README is a work in progress.
 
