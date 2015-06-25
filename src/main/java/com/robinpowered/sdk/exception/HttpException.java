@@ -1,6 +1,5 @@
 package com.robinpowered.sdk.exception;
 
-import com.sun.javafx.beans.annotations.NonNull;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
@@ -39,10 +38,10 @@ public class HttpException extends IOException {
      * RetroFit specific
      */
 
-    public static HttpException factory(@NonNull RetrofitError error) {
+    public static HttpException factory(RetrofitError error) {
         HttpException exception = new HttpException(error);
 
-        Response response = error.getResponse();
+        Response response = error != null ? error.getResponse() : null;
 
         if (response != null) {
             int statusCode = response.getStatus();

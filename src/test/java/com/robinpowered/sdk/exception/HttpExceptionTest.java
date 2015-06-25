@@ -63,6 +63,13 @@ public class HttpExceptionTest {
     }
 
     @Test
+    public void testFactoryWithNull() throws Exception {
+        HttpException result = HttpException.factory(null);
+        assertThat(result).isNotNull();
+        assertThat(result.getCause()).isNull();
+    }
+
+    @Test
     public void testIsClientError() {
         // Null exception should return false
         assertThat(HttpException.isClientError(null)).isFalse();
