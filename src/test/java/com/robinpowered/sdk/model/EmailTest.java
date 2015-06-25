@@ -10,7 +10,6 @@ public class EmailTest {
     @Test
     public void testEqualsAndHashcode() {
         EqualsVerifier.forClass(User.Email.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }

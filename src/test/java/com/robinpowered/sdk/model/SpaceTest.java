@@ -8,7 +8,6 @@ public class SpaceTest {
     @Test
     public void testEqualsAndHashcode() {
         EqualsVerifier.forClass(Space.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }

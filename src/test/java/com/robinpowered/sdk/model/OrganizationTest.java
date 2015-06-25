@@ -8,7 +8,6 @@ public class OrganizationTest {
     @Test
     public void testEqualsAndHashcode() {
         EqualsVerifier.forClass(Organization.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }

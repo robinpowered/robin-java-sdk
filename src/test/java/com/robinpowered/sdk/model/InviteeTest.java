@@ -8,7 +8,6 @@ public class InviteeTest {
     @Test
     public void testEqualsAndHashcode() {
         EqualsVerifier.forClass(Invitee.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }

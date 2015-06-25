@@ -8,7 +8,6 @@ public class PresenceTest {
     @Test
     public void testEqualsAndHashcode() {
         EqualsVerifier.forClass(Presence.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }

@@ -8,7 +8,6 @@ public class CalendarTest {
     @Test
     public void testEqualsAndHashcode() {
         EqualsVerifier.forClass(Calendar.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }

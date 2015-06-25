@@ -8,7 +8,6 @@ public class TokenTest {
     @Test
     public void testEqualsAndHashcode() {
         EqualsVerifier.forClass(Token.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }

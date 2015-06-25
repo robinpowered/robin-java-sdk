@@ -8,7 +8,6 @@ public class UserTest {
     @Test
     public void testEqualsAndHashcode() {
         EqualsVerifier.forClass(User.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }

@@ -8,7 +8,6 @@ public class EventTest {
     @Test
     public void testEqualsAndHashcode() {
         EqualsVerifier.forClass(Event.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }

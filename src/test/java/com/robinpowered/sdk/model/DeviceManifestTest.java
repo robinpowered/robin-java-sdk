@@ -8,7 +8,6 @@ public class DeviceManifestTest {
     @Test
     public void testEqualsAndHashcode() {
         EqualsVerifier.forClass(DeviceManifest.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }
@@ -16,7 +15,6 @@ public class DeviceManifestTest {
     @Test
     public void testFeedsEqualsAndHashcode() {
         EqualsVerifier.forClass(DeviceManifest.Feed.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }

@@ -8,7 +8,6 @@ public class LocationTest {
     @Test
     public void testEqualsAndHashcode() {
         EqualsVerifier.forClass(Location.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }

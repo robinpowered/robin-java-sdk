@@ -8,7 +8,6 @@ public class IdentifierTest {
     @Test
     public void testEqualsAndHashcode() {
         EqualsVerifier.forClass(Identifier.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }

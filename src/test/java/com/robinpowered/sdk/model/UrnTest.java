@@ -134,7 +134,6 @@ public class UrnTest {
     @Test
     public void testEqualsAndHashcode() {
         EqualsVerifier.forClass(Urn.class)
-                .withRedefinedSuperclass()
                 .usingGetClass()
                 .verify();
     }
