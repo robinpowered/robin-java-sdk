@@ -8,7 +8,7 @@ SLUG="robinpowered/robin-java-sdk"
 JDK="oraclejdk8"
 BRANCH="master"
 
-if [ "$TRAVIS_REPO_SLUG" == "$SLUG" ] && [ "$TRAVIS_JDK_VERSION" == "$JDK" ] && [ "$TRAVIS_PULL_REQUEST" == "false"] && [ "$TRAVIS_BRANCH" == "$BRANCH" ]; then
+if [ "$TRAVIS_REPO_SLUG" == "$SLUG" ] && [ "$TRAVIS_JDK_VERSION" == "$JDK" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "$BRANCH" ]; then
 
   echo -e "Publishing javadoc...\n"
 
