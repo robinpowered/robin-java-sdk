@@ -6,17 +6,16 @@ import com.robinpowered.sdk.model.DeviceManifest;
 import com.robinpowered.sdk.model.Identifier;
 import com.robinpowered.sdk.model.Space;
 import com.robinpowered.sdk.model.Urn;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-
 import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.Path;
 import retrofit.http.QueryMap;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 public interface DeviceService {
 

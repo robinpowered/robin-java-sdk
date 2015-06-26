@@ -5,15 +5,14 @@ import com.robinpowered.sdk.model.Event;
 import com.robinpowered.sdk.model.Organization;
 import com.robinpowered.sdk.model.Presence;
 import com.robinpowered.sdk.model.User;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-
 import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Path;
 import retrofit.http.QueryMap;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 public interface AccountService {
 
@@ -22,6 +21,7 @@ public interface AccountService {
      */
 
     // Sync
+
     @GET("/users/{id}")
     ApiResponse<User> getUser(@Path("id") int id, @QueryMap Map<String, Object> options) throws IOException;
 

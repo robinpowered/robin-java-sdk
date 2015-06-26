@@ -1,10 +1,10 @@
 package com.robinpowered.sdk.exception;
 
-import java.io.IOException;
-
 import retrofit.ErrorHandler;
 import retrofit.RetrofitError;
 import retrofit.converter.ConversionException;
+
+import java.io.IOException;
 
 public class RobinExceptionHandler implements ErrorHandler {
 
