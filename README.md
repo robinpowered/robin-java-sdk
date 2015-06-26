@@ -5,6 +5,8 @@ This README is a work in progress.
 
 Full API documentation is available at [docs.robinpowered.com](https://docs.robinpowered.com).
 
+[View the Javadoc](http://robinpowered.github.io/robin-java-sdk/javadoc)
+
 ## Download
 
 This is a pre-release "preview" library and currently only available from the 
