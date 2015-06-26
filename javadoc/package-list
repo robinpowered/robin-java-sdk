@@ -1,0 +1,8 @@
+com.robinpowered.sdk
+com.robinpowered.sdk.credential
+com.robinpowered.sdk.exception
+com.robinpowered.sdk.http
+com.robinpowered.sdk.model
+com.robinpowered.sdk.model.adapter
+com.robinpowered.sdk.model.exception
+com.robinpowered.sdk.service
