@@ -26,14 +26,11 @@ import java.util.Map;
  * <p>
  * Example usage:
  *
- * <pre>
- * <code>Credential credential = new AccessTokenCredential("my token");
+ * <pre><code>{@code  Credential credential = new AccessTokenCredential("my token");
  * RobinApi apiClient = new RobinApi(credential);
  *
- * User me = apiClient.getService(AccountService.class).getMe();
- * System.out.println(me.getName());
- * </code>
- * </pre>
+ * ApiResponse<List<Presence>> presence = apiClient.getService(PlacesService.class).getPresence(mySpaceId).getData();
+ * }</code></pre>
  */
 public class RobinApi {
 
