@@ -97,6 +97,22 @@ public class User extends Account implements IdentifiableApiResponseModel {
          * Methods
          */
 
+        /**
+         * Constructor for generating a new un-verified email.
+         *
+         * @param email The email address.
+         */
+        public Email(String email) {
+            this.email = email;
+            this.isVerified = false;
+        }
+
+        /**
+         * Constructor.
+         *
+         * @param email The email address.
+         * @param isVerified Whether the email is verified.
+         */
         public Email(String email, boolean isVerified) {
             this.email = email;
             this.isVerified = isVerified;
