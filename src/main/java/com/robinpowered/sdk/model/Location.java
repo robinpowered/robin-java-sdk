@@ -1,6 +1,7 @@
 package com.robinpowered.sdk.model;
 
 import com.google.common.base.Objects;
+import org.joda.time.DateTime;
 
 /**
  * A collection of spaces. Most commonly a building or floor.
@@ -25,6 +26,8 @@ public class Location implements IdentifiableApiResponseModel {
     // Immutable
     private final int id;
     private final int accountId;
+    private final DateTime updatedAt;
+    private final DateTime createdAt;
 
     // Mutable
     private String name;
@@ -39,9 +42,11 @@ public class Location implements IdentifiableApiResponseModel {
      * Methods
      */
 
-    public Location(int id, int accountId) {
+    public Location(int id, int accountId, DateTime updatedAt, DateTime createdAt) {
         this.id = id;
         this.accountId = accountId;
+        this.updatedAt = updatedAt;
+        this.createdAt = createdAt;
     }
 
     @Override
@@ -101,18 +106,28 @@ public class Location implements IdentifiableApiResponseModel {
         this.latitude = latitude;
     }
 
+    public DateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public DateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Location location = (Location) o;
         return Objects.equal(id, location.id) &&
-                Objects.equal(accountId, location.accountId);
+                Objects.equal(accountId, location.accountId) &&
+                Objects.equal(updatedAt, location.updatedAt) &&
+                Objects.equal(createdAt, location.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, accountId);
+        return Objects.hashCode(id, accountId, updatedAt, createdAt);
     }
 
     @Override
