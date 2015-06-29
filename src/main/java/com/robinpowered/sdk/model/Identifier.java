@@ -130,15 +130,4 @@ public class Identifier implements ApiResponseModel {
     public String getMimeType() {
         return MIME_TYPE;
     }
-
-    public static class CreationRequest {
-
-        private Interface identifierInterface;
-        private Urn urn;
-
-        public CreationRequest(Interface identifierInterface, Urn urn) {
-            this.identifierInterface = identifierInterface;
-            this.urn = urn;
-        }
-    }
 }

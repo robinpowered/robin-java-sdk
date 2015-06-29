@@ -93,6 +93,7 @@ public class User extends Account implements IdentifiableApiResponseModel {
         private final String email;
         private final boolean isVerified;
 
+
         /**
          * Methods
          */
