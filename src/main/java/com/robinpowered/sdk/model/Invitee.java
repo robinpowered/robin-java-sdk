@@ -220,14 +220,14 @@ public class Invitee implements IdentifiableApiResponseModel {
         return MIME_TYPE;
     }
 
-    public static class CreationRequest {
-        private String email;
+    /**
+     * Used to invite others to an {@link Event} or {@link Event.Booking} and to become and {@link Invitee}.
+     */
+    public static class Invitation {
 
-        public String getEmail() {
-            return email;
-        }
+        private final String email;
 
-        public void setEmail(String email) {
+        public Invitation(String email) {
             this.email = email;
         }
     }

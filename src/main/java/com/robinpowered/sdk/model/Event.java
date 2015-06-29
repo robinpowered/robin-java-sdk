@@ -264,17 +264,20 @@ public class Event implements IdentifiableApiResponseModel {
         return MIME_TYPE;
     }
 
-    public static class CreationRequest {
+    /**
+     * An intention to create an {@link Event} and book a space.
+     */
+    public static class Booking {
 
-        private String ownerRef;
-        private String title;
-        private String description;
-        private DateTime startedAt;
-        private DateTime endedAt;
-        private List<Invitee.CreationRequest> invitees;
+        private final String ownerRef;
+        private final String title;
+        private final String description;
+        private final DateTime startedAt;
+        private final DateTime endedAt;
+        private final List<Invitee.Invitation> invitees;
 
-        public CreationRequest(String ownerRef, String title, String description,
-                DateTime startedAt, DateTime endedAt, List<Invitee.CreationRequest> invitees) {
+        public Booking(String ownerRef, String title, String description,
+                       DateTime startedAt, DateTime endedAt, List<Invitee.Invitation> invitees) {
 
             this.ownerRef = ownerRef;
             this.title = title;

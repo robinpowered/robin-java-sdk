@@ -51,19 +51,19 @@ public interface PlacesService {
 
     // Sync
     @POST("/locations/{id}/presence")
-    ApiResponse<Presence> postLocationPresence(@Path("id") int id, @Body Presence.RequestFormat presence) throws IOException;
+    ApiResponse<Presence> postLocationPresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence) throws IOException;
 
     // Async
     @POST("/locations/{id}/presence")
-    void postLocationPresence(@Path("id") int id, @Body Presence.RequestFormat presence, Callback<ApiResponse<Presence>> callback);
+    void postLocationPresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence, Callback<ApiResponse<Presence>> callback);
 
     // Sync
     @DELETE("/locations/{id}/presence")
-    void deleteLocationPresence(@Path("id") int id, @Body Presence.RequestFormat presence) throws IOException;
+    void deleteLocationPresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence) throws IOException;
 
     // Async
     @DELETE("/locations/{id}/presence")
-    void deleteLocationPresence(@Path("id") int id, @Body Presence.RequestFormat presence, Callback<ApiResponse<Presence>> callback);
+    void deleteLocationPresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence, Callback<ApiResponse<Presence>> callback);
 
     // Sync
     @GET("/locations/{locationId}/events")
@@ -112,19 +112,19 @@ public interface PlacesService {
 
     // Sync
     @POST("/spaces/{id}/presence")
-    ApiResponse<Presence> postSpacePresence(@Path("id") int id, @Body Presence.RequestFormat presence) throws IOException;
+    ApiResponse<Presence> postSpacePresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence) throws IOException;
 
     // Async
     @POST("/spaces/{id}/presence")
-    void postSpacePresence(@Path("id") int id, @Body Presence.RequestFormat presence, Callback<ApiResponse<Presence>> callback);
+    void postSpacePresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence, Callback<ApiResponse<Presence>> callback);
 
     // Sync
     @DELETE("/spaces/{id}/presence")
-    void deletePresence(@Path("id") int id, @Body Presence.RequestFormat presence) throws IOException;
+    void deletePresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence) throws IOException;
 
     // Async
     @DELETE("/spaces/{id}/presence")
-    void deletePresence(@Path("id") int id, @Body Presence.RequestFormat presence, Callback<ApiResponse<Presence>> callback);
+    void deletePresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence, Callback<ApiResponse<Presence>> callback);
 
     // Sync
     @GET("/spaces/{spaceId}/events")
@@ -152,11 +152,11 @@ public interface PlacesService {
 
     // Sync
     @POST("/spaces/{spaceId}/events")
-    ApiResponse<Event> bookSpace(@Path("spaceId") int spaceId, @Body Event.CreationRequest event) throws IOException;
+    ApiResponse<Event> bookSpace(@Path("spaceId") int spaceId, @Body Event.Booking eventBooking) throws IOException;
 
     // Async
     @POST("/spaces/{spaceId}/events")
-    void bookSpace(@Path("spaceId") int spaceId, @Body Event.CreationRequest event, Callback<ApiResponse<Event>> callback);
+    void bookSpace(@Path("spaceId") int spaceId, @Body Event.Booking eventBooking, Callback<ApiResponse<Event>> callback);
 
 
     /**

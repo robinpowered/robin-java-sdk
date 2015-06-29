@@ -169,12 +169,12 @@ public class Presence implements ApiResponseModel {
         return MIME_TYPE;
     }
 
-    public static class RequestFormat {
+    public static class Occurrence {
         private String userRef;
         private Integer deviceId;
         private Integer sessionTtl;
 
-        public RequestFormat(String userRef, Integer deviceId, Integer sessionTtl) {
+        public Occurrence(String userRef, Integer deviceId, Integer sessionTtl) {
             this.userRef = userRef;
             this.deviceId = deviceId;
             this.sessionTtl = sessionTtl;
