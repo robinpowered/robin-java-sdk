@@ -5,6 +5,8 @@ import org.joda.time.DateTime;
 
 /**
  * A user model.
+ *
+ * @todo Does isPending need to be exposed in this model?
  */
 public class User extends Account implements IdentifiableApiResponseModel {
 
