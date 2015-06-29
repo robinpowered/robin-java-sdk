@@ -91,14 +91,15 @@ public class User extends Account implements IdentifiableApiResponseModel {
 
         // Immutable
         private final String email;
-        private boolean isVerified;
+        private final boolean isVerified;
 
         /**
          * Methods
          */
 
-        public Email(String email) {
+        public Email(String email, boolean isVerified) {
             this.email = email;
+            this.isVerified = isVerified;
         }
 
         public String getEmail() {
