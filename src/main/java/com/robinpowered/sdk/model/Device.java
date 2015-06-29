@@ -26,13 +26,18 @@ public class Device implements IdentifiableApiResponseModel {
      * Properties
      */
 
+    // Immutable
     private final int id;
     private final int accountId;
-    private Integer deviceManifestId;
+    private final Integer deviceManifestId;
+    private final DateTime lastReportedAt;
+    private final DateTime createdAt;
+    private final DateTime updatedAt;
+
+    // Mutable
     private String name;
-    private DateTime lastReportedAt;
-    private DateTime createdAt;
-    private DateTime updatedAt;
+
+    // Submodel
     private List<Identifier> identifiers;
 
 
@@ -40,9 +45,13 @@ public class Device implements IdentifiableApiResponseModel {
      * Methods
      */
 
-    public Device(int id, int accountId) {
+    public Device(int id, int accountId, Integer deviceManifestId, DateTime lastReportedAt, DateTime createdAt, DateTime updatedAt) {
         this.id = id;
         this.accountId = accountId;
+        this.deviceManifestId = deviceManifestId;
+        this.lastReportedAt = lastReportedAt;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -58,10 +67,6 @@ public class Device implements IdentifiableApiResponseModel {
         return deviceManifestId;
     }
 
-    public void setDeviceManifestId(Integer deviceManifestId) {
-        this.deviceManifestId = deviceManifestId;
-    }
-
     public String getName() {
         return name;
     }
@@ -74,24 +79,12 @@ public class Device implements IdentifiableApiResponseModel {
         return lastReportedAt;
     }
 
-    public void setLastReportedAt(DateTime lastReportedAt) {
-        this.lastReportedAt = lastReportedAt;
-    }
-
     public DateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(DateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public DateTime getUpdatedAt() {
         return updatedAt;
-    }
-
-    public void setUpdatedAt(DateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public List<Identifier> getIdentifiers() {
@@ -108,12 +101,16 @@ public class Device implements IdentifiableApiResponseModel {
         if (o == null || getClass() != o.getClass()) return false;
         Device device = (Device) o;
         return Objects.equal(id, device.id) &&
-                Objects.equal(accountId, device.accountId);
+                Objects.equal(accountId, device.accountId) &&
+                Objects.equal(deviceManifestId, device.deviceManifestId) &&
+                Objects.equal(lastReportedAt, device.lastReportedAt) &&
+                Objects.equal(createdAt, device.createdAt) &&
+                Objects.equal(updatedAt, device.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, accountId);
+        return Objects.hashCode(id, accountId, deviceManifestId, lastReportedAt, createdAt, updatedAt);
     }
 
     @Override

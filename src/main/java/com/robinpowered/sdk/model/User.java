@@ -1,6 +1,7 @@
 package com.robinpowered.sdk.model;
 
 import com.google.common.base.Objects;
+import org.joda.time.DateTime;
 
 /**
  * A user model.
@@ -18,32 +19,45 @@ public class User extends Account implements IdentifiableApiResponseModel {
      * Properties
      */
 
-    private Email primaryEmail;
-    private Boolean isPending;
+    // Immutable
+    private final boolean isPending;
+
+    // Immutable Submodels
+    private final Email primaryEmail;
 
 
     /**
      * Methods
      */
 
-    public User(int id, String slug) {
-        super(id, slug);
+    public User(int id, String slug, boolean isPending, Email primaryEmail, DateTime createdAt, DateTime updatedAt) {
+        super(id, slug, false, createdAt, updatedAt);
+
+        this.isPending = isPending;
+        this.primaryEmail = primaryEmail;
     }
 
     public Email getPrimaryEmail() {
         return primaryEmail;
     }
 
-    public void setPrimaryEmail(Email primaryEmail) {
-        this.primaryEmail = primaryEmail;
-    }
-
-    public Boolean isPending() {
+    public boolean isPending() {
         return isPending;
     }
 
-    public void setIsPending(Boolean isPending) {
-        this.isPending = isPending;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        User user = (User) o;
+        return Objects.equal(isPending, user.isPending) &&
+                Objects.equal(primaryEmail, user.primaryEmail);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(super.hashCode(), isPending, primaryEmail);
     }
 
     @Override
@@ -77,9 +91,7 @@ public class User extends Account implements IdentifiableApiResponseModel {
 
         // Immutable
         private final String email;
-
-        // Mutable
-        private Boolean isVerified;
+        private boolean isVerified;
 
         /**
          * Methods
@@ -97,21 +109,18 @@ public class User extends Account implements IdentifiableApiResponseModel {
             return isVerified;
         }
 
-        public void setIsVerified(Boolean isVerified) {
-            this.isVerified = isVerified;
-        }
-
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Email email1 = (Email) o;
-            return Objects.equal(email, email1.email);
+            return Objects.equal(isVerified, email1.isVerified) &&
+                    Objects.equal(email, email1.email);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hashCode(email);
+            return Objects.hashCode(email, isVerified);
         }
 
         @Override

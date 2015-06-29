@@ -68,21 +68,20 @@ public class Identifier implements ApiResponseModel {
     // Immutable
     private final Urn urn;
     @SerializedName("interface")
-    private final Interface idInterface; // Use a non-Java-keyword for our field name
+    private final Interface type; // Use a non-Java-keyword for our field name
     private final String value;
-
-    // Mutable
-    private DateTime createdAt;
+    private final DateTime createdAt;
 
 
     /**
      * Methods
      */
 
-    public Identifier(Urn urn, Interface idInterface, String value) {
+    public Identifier(Urn urn, Interface type, String value, DateTime createdAt) {
         this.urn = urn;
-        this.idInterface = idInterface;
+        this.type = type;
         this.value = value;
+        this.createdAt = createdAt;
     }
 
     public Urn getUrn() {
@@ -90,7 +89,7 @@ public class Identifier implements ApiResponseModel {
     }
 
     public Interface getInterface() {
-        return idInterface;
+        return type;
     }
 
     public String getValue() {
@@ -101,30 +100,27 @@ public class Identifier implements ApiResponseModel {
         return createdAt;
     }
 
-    public void setCreatedAt(DateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Identifier that = (Identifier) o;
         return Objects.equal(urn, that.urn) &&
-                Objects.equal(idInterface, that.idInterface) &&
-                Objects.equal(value, that.value);
+                Objects.equal(type, that.type) &&
+                Objects.equal(value, that.value) &&
+                Objects.equal(createdAt, that.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(urn, idInterface, value);
+        return Objects.hashCode(urn, type, value, createdAt);
     }
 
     @Override
     public String toString() {
         return "Identifier{" +
                 "urn=" + urn +
-                ", idInterface=" + idInterface +
+                ", type=" + type +
                 ", value='" + value + '\'' +
                 ", createdAt=" + createdAt +
                 '}';

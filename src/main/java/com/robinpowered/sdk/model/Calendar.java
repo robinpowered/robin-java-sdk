@@ -27,29 +27,25 @@ public class Calendar implements ApiResponseModel {
      * Properties
      */
 
+    // Immutable
     private final Integer spaceId;
-    private final String remoteType;
-    private final String calendarId;
-    private final String subscriberId;
-    private final String spaceResourceId;
-    private final String spaceResourceEmail;
     private final DateTime subscriberExpiresAt;
     private final DateTime createdAt;
+
+    // Mutable
+    private String remoteType;
+    private String calendarId;
+    private String subscriberId;
+    private String spaceResourceId;
+    private String spaceResourceEmail;
 
 
     /**
      * Methods
      */
 
-    public Calendar(Integer spaceId, String remoteType, String calendarId, String subscriberId, String spaceResourceId,
-                    String spaceResourceEmail, DateTime subscriberExpiresAt, DateTime createdAt) {
-
+    public Calendar(Integer spaceId, DateTime subscriberExpiresAt, DateTime createdAt) {
         this.spaceId = spaceId;
-        this.remoteType = remoteType;
-        this.calendarId = calendarId;
-        this.subscriberId = subscriberId;
-        this.spaceResourceId = spaceResourceId;
-        this.spaceResourceEmail = spaceResourceEmail;
         this.subscriberExpiresAt = subscriberExpiresAt;
         this.createdAt = createdAt;
     }
@@ -62,20 +58,40 @@ public class Calendar implements ApiResponseModel {
         return remoteType;
     }
 
+    public void setRemoteType(String remoteType) {
+        this.remoteType = remoteType;
+    }
+
     public String getCalendarId() {
         return calendarId;
+    }
+
+    public void setCalendarId(String calendarId) {
+        this.calendarId = calendarId;
     }
 
     public String getSpaceResourceId() {
         return spaceResourceId;
     }
 
+    public void setSpaceResourceId(String spaceResourceId) {
+        this.spaceResourceId = spaceResourceId;
+    }
+
     public String getSpaceResourceEmail() {
         return spaceResourceEmail;
     }
 
+    public void setSpaceResourceEmail(String spaceResourceEmail) {
+        this.spaceResourceEmail = spaceResourceEmail;
+    }
+
     public String getSubscriberId() {
         return subscriberId;
+    }
+
+    public void setSubscriberId(String subscriberId) {
+        this.subscriberId = subscriberId;
     }
 
     public DateTime getSubscriberExpiresAt() {
@@ -92,17 +108,13 @@ public class Calendar implements ApiResponseModel {
         if (o == null || getClass() != o.getClass()) return false;
         Calendar calendar = (Calendar) o;
         return Objects.equal(spaceId, calendar.spaceId) &&
-                Objects.equal(createdAt, calendar.createdAt) &&
-                Objects.equal(remoteType, calendar.remoteType) &&
-                Objects.equal(calendarId, calendar.calendarId) &&
-                Objects.equal(subscriberId, calendar.subscriberId) &&
-                Objects.equal(spaceResourceId, calendar.spaceResourceId) &&
-                Objects.equal(spaceResourceEmail, calendar.spaceResourceEmail);
+                Objects.equal(subscriberExpiresAt, calendar.subscriberExpiresAt) &&
+                Objects.equal(createdAt, calendar.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(spaceId, createdAt, remoteType, calendarId, subscriberId, spaceResourceId, spaceResourceEmail);
+        return Objects.hashCode(spaceId, subscriberExpiresAt, createdAt);
     }
 
     @Override

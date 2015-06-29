@@ -89,6 +89,8 @@ public class Invitee implements IdentifiableApiResponseModel {
     private boolean isResource;
     private DateTime updatedAt;
     private DateTime createdAt;
+
+    // Submodels
     private User user;
 
 

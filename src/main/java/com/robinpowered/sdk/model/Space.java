@@ -26,18 +26,20 @@ public class Space implements IdentifiableApiResponseModel {
 
     // Immutable
     private final int id;
+    private final int locationId;
+    private final boolean isDibsed;
+    private final DateTime updatedAt;
+    private final DateTime createdAt;
 
     // Mutable
-    private Integer locationId;
     private String name;
     private String description;
     private String image;
     private Float discoveryRadius;
     private Integer capacity;
     private Boolean isDisabled;
-    private Boolean isDibsed;
-    private DateTime updatedAt;
-    private DateTime createdAt;
+
+    // Submodels
     private Location location;
     private Calendar calendar;
     private Event currentEvent;
@@ -48,8 +50,12 @@ public class Space implements IdentifiableApiResponseModel {
      * Methods
      */
 
-    public Space(int id) {
+    public Space(int id, int locationId, boolean isDibsed, DateTime updatedAt, DateTime createdAt) {
         this.id = id;
+        this.locationId = locationId;
+        this.isDibsed = isDibsed;
+        this.updatedAt = updatedAt;
+        this.createdAt = createdAt;
     }
 
     @Override
@@ -59,10 +65,6 @@ public class Space implements IdentifiableApiResponseModel {
 
     public Integer getLocationId() {
         return locationId;
-    }
-
-    public void setLocationId(Integer locationId) {
-        this.locationId = locationId;
     }
 
     public String getName() {
@@ -117,24 +119,12 @@ public class Space implements IdentifiableApiResponseModel {
         return isDibsed;
     }
 
-    public void setIsDibsed(Boolean isDibsed) {
-        this.isDibsed = isDibsed;
-    }
-
     public DateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(DateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public DateTime getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt(DateTime createdAt) {
-        this.createdAt = createdAt;
     }
 
     public Location getLocation() {
@@ -174,12 +164,16 @@ public class Space implements IdentifiableApiResponseModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Space space = (Space) o;
-        return Objects.equal(id, space.id);
+        return Objects.equal(id, space.id) &&
+                Objects.equal(locationId, space.locationId) &&
+                Objects.equal(isDibsed, space.isDibsed) &&
+                Objects.equal(updatedAt, space.updatedAt) &&
+                Objects.equal(createdAt, space.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hashCode(id, locationId, isDibsed, updatedAt, createdAt);
     }
 
     @Override

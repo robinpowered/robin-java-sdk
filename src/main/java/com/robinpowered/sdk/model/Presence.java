@@ -46,10 +46,10 @@ public class Presence implements ApiResponseModel {
     private final DateTime lastSeenAt;
     private final DateTime arrivedAt;
     private final DateTime expiredAt;
-    private final Integer sessionTtl;
-    private final Boolean sessionActive;
+    private final int sessionTtl;
+    private final boolean sessionActive;
 
-    // Mutable
+    // Submodels
     private User user;
     private Device device;
 

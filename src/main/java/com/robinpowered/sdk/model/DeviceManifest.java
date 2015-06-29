@@ -21,6 +21,7 @@ public class DeviceManifest implements IdentifiableApiResponseModel {
      * Properties
      */
 
+    // Immutable
     private final int id;
     private final String name;
     private final String slug;
@@ -28,6 +29,8 @@ public class DeviceManifest implements IdentifiableApiResponseModel {
     private final String presencePublisherType;
     private final DateTime createdAt;
     private final DateTime updatedAt;
+
+    // Immutable Submodels
     private final List<Feed> feeds;
 
 

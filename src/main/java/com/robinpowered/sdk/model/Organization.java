@@ -1,5 +1,7 @@
 package com.robinpowered.sdk.model;
 
+import org.joda.time.DateTime;
+
 /**
  * A company or team. Made up of users, locations and spaces.
  */
@@ -16,8 +18,8 @@ public class Organization extends Account implements IdentifiableApiResponseMode
      * Methods
      */
 
-    public Organization(int id, String slug) {
-        super(id, slug);
+    public Organization(int id, String slug, boolean isOrganization, DateTime createdAt, DateTime updatedAt) {
+        super(id, slug, isOrganization, createdAt, updatedAt);
     }
 
     @Override

@@ -22,22 +22,25 @@ abstract public class Account implements IdentifiableApiResponseModel {
     // Immutable
     private final int id;
     private final String slug;
+    private final boolean isOrganization;
+    private final DateTime createdAt;
+    private final DateTime updatedAt;
 
     // Mutable
-    private Boolean isOrganization;
     private String name;
     private String avatar;
-    private DateTime createdAt;
-    private DateTime updatedAt;
 
 
     /**
      * Methods
      */
 
-    public Account(int id, String slug) {
+    public Account(int id, String slug, boolean isOrganization, DateTime createdAt, DateTime updatedAt) {
         this.id = id;
         this.slug = slug;
+        this.isOrganization = isOrganization;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -47,10 +50,6 @@ abstract public class Account implements IdentifiableApiResponseModel {
 
     public Boolean isOrganization() {
         return isOrganization;
-    }
-
-    public void setIsOrganization(Boolean isOrganization) {
-        this.isOrganization = isOrganization;
     }
 
     public String getName() {
@@ -77,16 +76,8 @@ abstract public class Account implements IdentifiableApiResponseModel {
         return createdAt;
     }
 
-    public void setCreatedAt(DateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public DateTime getUpdatedAt() {
         return updatedAt;
-    }
-
-    public void setUpdatedAt(DateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -95,12 +86,15 @@ abstract public class Account implements IdentifiableApiResponseModel {
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
         return Objects.equal(id, account.id) &&
-                Objects.equal(slug, account.slug);
+                Objects.equal(isOrganization, account.isOrganization) &&
+                Objects.equal(slug, account.slug) &&
+                Objects.equal(createdAt, account.createdAt) &&
+                Objects.equal(updatedAt, account.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, slug);
+        return Objects.hashCode(id, slug, isOrganization, createdAt, updatedAt);
     }
 
     @Override
