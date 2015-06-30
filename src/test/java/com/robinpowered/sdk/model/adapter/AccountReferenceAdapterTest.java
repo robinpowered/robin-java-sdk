@@ -28,4 +28,17 @@ public class AccountReferenceAdapterTest {
         when(ref.getSlug()).thenReturn(null);
         assertThat(adapter.serialize(ref, Account.Reference.class, null).getAsInt()).isEqualTo(id);
     }
+
+    @Test(expected = RuntimeException.class)
+    public void testSerializeThrowsException() {
+        AccountReferenceAdapter adapter = new AccountReferenceAdapter();
+
+        // Create mocks
+        Account.Reference ref = mock(Account.Reference.class);
+
+        // Test for slug
+        when(ref.getId()).thenReturn(null);
+        when(ref.getSlug()).thenReturn(null);
+        adapter.serialize(ref, Account.Reference.class, null);
+    }
 }
