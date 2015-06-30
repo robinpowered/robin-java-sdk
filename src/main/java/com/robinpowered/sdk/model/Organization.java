@@ -39,8 +39,8 @@ public class Organization extends Account implements IdentifiableApiResponseMode
             super(slug);
         }
 
-        public Reference(int userId) {
-            super(userId);
+        public Reference(int organizationId) {
+            super(organizationId);
         }
     }
 }
