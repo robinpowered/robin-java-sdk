@@ -33,4 +33,14 @@ public class Organization extends Account implements IdentifiableApiResponseMode
     public String toString() {
         return "Organization{} " + super.toString();
     }
+
+    public static final class Reference extends Account.Reference {
+        public Reference(String slug) {
+            super(slug);
+        }
+
+        public Reference(int userId) {
+            super(userId);
+        }
+    }
 }

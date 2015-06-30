@@ -170,17 +170,17 @@ public class Presence implements ApiResponseModel {
     }
 
     public static class Occurrence {
-        private String userRef;
+        private User.Reference userRef;
         private Integer deviceId;
         private Integer sessionTtl;
 
-        public Occurrence(String userRef, Integer deviceId, Integer sessionTtl) {
+        public Occurrence(User.Reference userRef, Integer deviceId, Integer sessionTtl) {
             this.userRef = userRef;
             this.deviceId = deviceId;
             this.sessionTtl = sessionTtl;
         }
 
-        public String getUserRef() {
+        public User.Reference getUserRef() {
             return userRef;
         }
 

@@ -153,4 +153,14 @@ public class User extends Account implements IdentifiableApiResponseModel {
             return Email.MIME_TYPE;
         }
     }
+
+    public static final class Reference extends Account.Reference {
+        public Reference(String slug) {
+            super(slug);
+        }
+
+        public Reference(int userId) {
+            super(userId);
+        }
+    }
 }

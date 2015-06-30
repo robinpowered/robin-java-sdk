@@ -4,8 +4,8 @@ import com.robinpowered.sdk.http.DELETE;
 import com.robinpowered.sdk.model.ApiResponse;
 import com.robinpowered.sdk.model.Calendar;
 import com.robinpowered.sdk.model.Dibs;
-import com.robinpowered.sdk.model.Event;
 import com.robinpowered.sdk.model.Location;
+import com.robinpowered.sdk.model.Organization;
 import com.robinpowered.sdk.model.Presence;
 import com.robinpowered.sdk.model.Space;
 import retrofit.Callback;
@@ -66,20 +66,12 @@ public interface PlacesService {
     void deleteLocationPresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence, Callback<ApiResponse<Presence>> callback);
 
     // Sync
-    @GET("/locations/{locationId}/events")
-    ApiResponse<List<Event>> getLocationEvents(@Path("locationId") int locationId, @QueryMap Map<String, Object> options) throws IOException;
-
-    // Async
-    @GET("/locations/{locationId}/events")
-    void getLocationEvents(@Path("locationId") int locationId, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Event>>> callback);
-
-    // Sync
     @GET("/organizations/{id}/locations")
-    ApiResponse<List<Location>> getLocationsForOrganization(@Path("id") int id, @QueryMap Map<String, Object> options) throws IOException;
+    ApiResponse<List<Location>> getLocationsForOrganization(@Path("id") Organization.Reference id, @QueryMap Map<String, Object> options) throws IOException;
 
     // Async
     @GET("/organizations/{id}/locations")
-    void getLocationsForOrganization(@Path("id") int id, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Location>>> callback);
+    void getLocationsForOrganization(@Path("id") Organization.Reference id, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Location>>> callback);
 
 
     /**
@@ -125,38 +117,6 @@ public interface PlacesService {
     // Async
     @DELETE("/spaces/{id}/presence")
     void deletePresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence, Callback<ApiResponse<Presence>> callback);
-
-    // Sync
-    @GET("/spaces/{spaceId}/events")
-    ApiResponse<List<Event>> getEvents(@Path("spaceId") int spaceId, @QueryMap Map<String, Object> options) throws IOException;
-
-    // Async
-    @GET("/spaces/{spaceId}/events")
-    void getEvents(@Path("spaceId") int spaceId, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Event>>> callback);
-
-    // Sync
-    @GET("/spaces/{spaceId}/events/upcoming")
-    ApiResponse<List<Event>> getUpcomingEvents(@Path("spaceId") int spaceId, @QueryMap Map<String, Object> options) throws IOException;
-
-    // Async
-    @GET("/spaces/{spaceId}/events/upcoming")
-    void getUpcomingEvents(@Path("spaceId") int spaceId, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Event>>> callback);
-
-    // Sync
-    @GET("/spaces/{spaceId}/events/recent")
-    ApiResponse<List<Event>> getRecentEvents(@Path("spaceId") int spaceId, @QueryMap Map<String, Object> options) throws IOException;
-
-    // Async
-    @GET("/spaces/{spaceId}/events/recent")
-    void getRecentEvents(@Path("spaceId") int spaceId, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Event>>> callback);
-
-    // Sync
-    @POST("/spaces/{spaceId}/events")
-    ApiResponse<Event> bookSpace(@Path("spaceId") int spaceId, @Body Event.Booking eventBooking) throws IOException;
-
-    // Async
-    @POST("/spaces/{spaceId}/events")
-    void bookSpace(@Path("spaceId") int spaceId, @Body Event.Booking eventBooking, Callback<ApiResponse<Event>> callback);
 
 
     /**

@@ -114,4 +114,36 @@ abstract public class Account implements IdentifiableApiResponseModel {
     public String getMimeType() {
         return MIME_TYPE;
     }
+
+    public static class Reference {
+        private String slug = null;
+        private Integer id = null;
+
+        public Reference(String slug) {
+            this.slug = slug;
+        }
+
+        public Reference(int id) {
+            this.id = id;
+        }
+
+        public String getSlug() {
+            return slug;
+        }
+
+        public Integer getId() {
+            return id;
+        }
+
+        @Override
+        public String toString() {
+            if (id != null) {
+                return id.toString();
+            } else if (slug != null) {
+                return slug;
+            } else {
+                throw new RuntimeException("Both the slug and id are null");
+            }
+        }
+    }
 }

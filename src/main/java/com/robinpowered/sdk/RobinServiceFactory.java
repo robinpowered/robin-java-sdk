@@ -5,7 +5,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.robinpowered.sdk.credential.Credential;
 import com.robinpowered.sdk.exception.RobinExceptionHandler;
+import com.robinpowered.sdk.model.Account;
 import com.robinpowered.sdk.model.Urn;
+import com.robinpowered.sdk.model.adapter.AccountReferenceAdapter;
 import com.robinpowered.sdk.model.adapter.JodaDateTimeAdapter;
 import com.robinpowered.sdk.model.adapter.RobinTypeAdapterFactory;
 import com.robinpowered.sdk.model.adapter.UrnAdapter;
@@ -60,6 +62,7 @@ public class RobinServiceFactory {
                 .registerTypeAdapter(DateTime.class, new JodaDateTimeAdapter())
                 .registerTypeAdapterFactory(new RobinTypeAdapterFactory())
                 .registerTypeAdapter(Urn.class, new UrnAdapter())
+                .registerTypeAdapter(Account.Reference.class, new AccountReferenceAdapter())
                 .serializeNulls()
 
                 .create();
