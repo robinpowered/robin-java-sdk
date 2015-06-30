@@ -1,5 +1,6 @@
 package com.robinpowered.sdk.service;
 
+import com.robinpowered.sdk.http.DELETE;
 import com.robinpowered.sdk.model.ApiResponse;
 import com.robinpowered.sdk.model.Event;
 import com.robinpowered.sdk.model.User;
@@ -23,6 +24,14 @@ public interface EventService {
     // Async
     @GET("/events/{eventId}")
     void getEvent(@Path("eventId") int eventId, @QueryMap Map<String, Object> options, Callback<ApiResponse<Event>> callback);
+
+    // Sync
+    @DELETE("/events/{eventId}")
+    ApiResponse<Void> deleteEvent(@Path("eventId") int eventId) throws IOException;
+
+    // Async
+    @DELETE("/events/{eventId}")
+    void deleteEvent(@Path("eventId") int eventId, Callback<ApiResponse<Void>> callback);
 
 
     /**
