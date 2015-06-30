@@ -62,7 +62,7 @@ public class RobinServiceFactory {
                 .registerTypeAdapter(DateTime.class, new JodaDateTimeAdapter())
                 .registerTypeAdapterFactory(new RobinTypeAdapterFactory())
                 .registerTypeAdapter(Urn.class, new UrnAdapter())
-                .registerTypeAdapter(Account.Reference.class, new AccountReferenceAdapter())
+                .registerTypeHierarchyAdapter(Account.Reference.class, new AccountReferenceAdapter())
                 .serializeNulls()
 
                 .create();
