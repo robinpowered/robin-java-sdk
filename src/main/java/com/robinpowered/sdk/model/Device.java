@@ -131,4 +131,15 @@ public class Device implements IdentifiableApiResponseModel {
     public String getMimeType() {
         return MIME_TYPE;
     }
+
+    public static class PostRequest {
+
+        private final int deviceManifestId;
+        private final String name;
+
+        public PostRequest(int deviceManifestId, String name) {
+            this.deviceManifestId = deviceManifestId;
+            this.name = name;
+        }
+    }
 }

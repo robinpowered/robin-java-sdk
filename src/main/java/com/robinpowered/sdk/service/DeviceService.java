@@ -25,11 +25,11 @@ public interface DeviceService {
 
     // Sync
     @POST("/me/devices")
-    ApiResponse<Device> addDevice(@Body Device device) throws IOException;
+    ApiResponse<Device> addDevice(@Body Device.PostRequest device) throws IOException;
 
     // Async
     @POST("/me/devices")
-    void addDevice(@Body Device device, Callback<ApiResponse<Device>> callback);
+    void addDevice(@Body Device.PostRequest device, Callback<ApiResponse<Device>> callback);
 
 
     /**
