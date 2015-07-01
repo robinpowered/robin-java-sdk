@@ -59,11 +59,11 @@ public interface PlacesService {
 
     // Sync
     @DELETE("/locations/{id}/presence")
-    void deleteLocationPresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence) throws IOException;
+    ApiResponse<Void> deleteLocationPresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence) throws IOException;
 
     // Async
     @DELETE("/locations/{id}/presence")
-    void deleteLocationPresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence, Callback<ApiResponse<Presence>> callback);
+    void deleteLocationPresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence, Callback<ApiResponse<Void>> callback);
 
     // Sync
     @GET("/organizations/{id}/locations")
@@ -112,11 +112,11 @@ public interface PlacesService {
 
     // Sync
     @DELETE("/spaces/{id}/presence")
-    void deletePresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence) throws IOException;
+    ApiResponse<Void> deletePresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence) throws IOException;
 
     // Async
     @DELETE("/spaces/{id}/presence")
-    void deletePresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence, Callback<ApiResponse<Presence>> callback);
+    void deletePresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence, Callback<ApiResponse<Void>> callback);
 
 
     /**
