@@ -7,6 +7,7 @@ import com.robinpowered.sdk.model.User;
 import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
+import retrofit.http.PATCH;
 import retrofit.http.POST;
 import retrofit.http.Path;
 import retrofit.http.QueryMap;
@@ -24,6 +25,14 @@ public interface EventService {
     // Async
     @GET("/events/{eventId}")
     void getEvent(@Path("eventId") int eventId, @QueryMap Map<String, Object> options, Callback<ApiResponse<Event>> callback);
+
+    // Sync
+    @PATCH("/events/{eventId}")
+    ApiResponse<Event> updateEvent(@Path("eventId") int eventId, @Body Event event) throws IOException;
+
+    // Async
+    @PATCH("/events/{eventId}")
+    void updateEvent(@Path("eventId") int eventId, @Body Event event, Callback<ApiResponse<Event>> callback);
 
     // Sync
     @DELETE("/events/{eventId}")
