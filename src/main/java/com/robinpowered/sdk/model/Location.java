@@ -26,8 +26,8 @@ public class Location implements IdentifiableApiResponseModel {
     // Immutable
     private final int id;
     private final int accountId;
-    private final DateTime updatedAt;
     private final DateTime createdAt;
+    private final DateTime updatedAt;
 
     // Mutable
     private String name;
@@ -42,11 +42,11 @@ public class Location implements IdentifiableApiResponseModel {
      * Methods
      */
 
-    public Location(int id, int accountId, DateTime updatedAt, DateTime createdAt) {
+    public Location(int id, int accountId, DateTime createdAt, DateTime updatedAt) {
         this.id = id;
         this.accountId = accountId;
-        this.updatedAt = updatedAt;
         this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -121,13 +121,13 @@ public class Location implements IdentifiableApiResponseModel {
         Location location = (Location) o;
         return Objects.equal(id, location.id) &&
                 Objects.equal(accountId, location.accountId) &&
-                Objects.equal(updatedAt, location.updatedAt) &&
-                Objects.equal(createdAt, location.createdAt);
+                Objects.equal(createdAt, location.createdAt) &&
+                Objects.equal(updatedAt, location.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, accountId, updatedAt, createdAt);
+        return Objects.hashCode(id, accountId, createdAt, updatedAt);
     }
 
     @Override

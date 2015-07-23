@@ -28,8 +28,8 @@ public class Space implements IdentifiableApiResponseModel {
     private final int id;
     private final int locationId;
     private final boolean isDibsed;
-    private final DateTime updatedAt;
     private final DateTime createdAt;
+    private final DateTime updatedAt;
 
     // Mutable
     private String name;
@@ -50,12 +50,12 @@ public class Space implements IdentifiableApiResponseModel {
      * Methods
      */
 
-    public Space(int id, int locationId, boolean isDibsed, DateTime updatedAt, DateTime createdAt) {
+    public Space(int id, int locationId, boolean isDibsed, DateTime createdAt, DateTime updatedAt) {
         this.id = id;
         this.locationId = locationId;
         this.isDibsed = isDibsed;
-        this.updatedAt = updatedAt;
         this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -167,13 +167,13 @@ public class Space implements IdentifiableApiResponseModel {
         return Objects.equal(id, space.id) &&
                 Objects.equal(locationId, space.locationId) &&
                 Objects.equal(isDibsed, space.isDibsed) &&
-                Objects.equal(updatedAt, space.updatedAt) &&
-                Objects.equal(createdAt, space.createdAt);
+                Objects.equal(createdAt, space.createdAt) &&
+                Objects.equal(updatedAt, space.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, locationId, isDibsed, updatedAt, createdAt);
+        return Objects.hashCode(id, locationId, isDibsed, createdAt, updatedAt);
     }
 
     @Override
