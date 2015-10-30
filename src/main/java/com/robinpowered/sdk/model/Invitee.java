@@ -230,5 +230,9 @@ public class Invitee implements IdentifiableApiResponseModel {
         public Invitation(String email) {
             this.email = email;
         }
+
+        public String getEmail() {
+            return email;
+        }
     }
 }
