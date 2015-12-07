@@ -37,6 +37,7 @@ public class Space implements IdentifiableApiResponseModel {
     private String image;
     private Float discoveryRadius;
     private Integer capacity;
+    private String type;
     private Boolean isDisabled;
 
     // Submodels
@@ -159,6 +160,14 @@ public class Space implements IdentifiableApiResponseModel {
         this.nextEvent = nextEvent;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -186,6 +195,7 @@ public class Space implements IdentifiableApiResponseModel {
                 ", image='" + image + '\'' +
                 ", discoveryRadius=" + discoveryRadius +
                 ", capacity=" + capacity +
+                ", type=" + type +
                 ", isDisabled=" + isDisabled +
                 ", isDibsed=" + isDibsed +
                 ", updatedAt=" + updatedAt +
