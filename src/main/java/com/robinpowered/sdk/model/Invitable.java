@@ -1,7 +1,7 @@
 package com.robinpowered.sdk.model;
 
 /**
- * Interface for models that are invited to an {@link Event}.
+ * Interface for models that may be invited to an {@link Event}.
  */
 public interface Invitable {
 }
