@@ -3,7 +3,7 @@
 
 This README is a work in progress.
 
-Full API documentation is available at [docs.robinpowered.com](https://docs.robinpowered.com).
+Full API documentation is available at [docs.robinpowered.com](http://docs.robinpowered.com).
 
 [View the Javadoc](http://robinpowered.github.io/robin-java-sdk/javadoc)
 
