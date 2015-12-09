@@ -275,11 +275,11 @@ public class Event implements IdentifiableApiResponseModel {
         private final DateTime startedAt;
         private final DateTime endedAt;
         private final boolean isAllDay;
-        private final List<Invited> invitees;
+        private final List<Invitable> invitees;
 
         public Booking(String ownerRef, String title, String description,
                        DateTime startedAt, DateTime endedAt, boolean isAllDay,
-                       List<Invited> invitees) {
+                       List<Invitable> invitees) {
 
             this.ownerRef = ownerRef;
             this.title = title;
