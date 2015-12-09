@@ -10,7 +10,7 @@ Full API documentation is available at [docs.robinpowered.com](https://docs.robi
 ## Download
 
 This is a pre-release "preview" library and currently only available from the 
-[sonatype `snapshots` repository](https://oss.sonatype.org/content/repositories/snapshots/) and not currently in the 
+[sonatype `snapshots` repository](https://oss.sonatype.org/content/repositories/snapshots/com/robinpowered/robin-java-sdk/) and not currently in the
 Maven Central Repository.
 
 Using Maven:
