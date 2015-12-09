@@ -82,7 +82,7 @@ public class Event implements IdentifiableApiResponseModel {
     private DateTime startedAt;
     private DateTime endedAt;
     private Boolean isAllDay;
-    private List<Invitee> invitees;
+    private List<Invitable> invitees;
 
 
     /**
@@ -210,7 +210,7 @@ public class Event implements IdentifiableApiResponseModel {
         this.isAllDay = isAllDay;
     }
 
-    public void setInvitees(List<Invitee> invitees) {
+    public void setInvitees(List<Invitable> invitees) {
         this.invitees = invitees;
     }
 
@@ -220,7 +220,7 @@ public class Event implements IdentifiableApiResponseModel {
      *
      * @return A list of the event's invitees.
      */
-    public List<Invitee> getInvitees() {
+    public List<Invitable> getInvitees() {
         return invitees;
     }
 
@@ -277,9 +277,8 @@ public class Event implements IdentifiableApiResponseModel {
         private final boolean isAllDay;
         private final List<Invitable> invitees;
 
-        public Booking(String ownerRef, String title, String description,
-                       DateTime startedAt, DateTime endedAt, boolean isAllDay,
-                       List<Invitable> invitees) {
+        public Booking(String ownerRef, String title, String description, DateTime startedAt, DateTime endedAt,
+                       boolean isAllDay, List<Invitable> invitees) {
 
             this.ownerRef = ownerRef;
             this.title = title;
