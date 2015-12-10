@@ -28,7 +28,7 @@ public class InvitableAdapter implements JsonDeserializer<Invitable>, JsonSerial
         boolean isInvitation = object.has("email") && !object.has("id");
         boolean isInvitee = object.has("email")
                 && object.has("id")
-                && object.has("eventId");
+                && object.has("event_id");
 
         if (isInvitation) {
             return context.deserialize(object, Invitee.Invitation.class);
