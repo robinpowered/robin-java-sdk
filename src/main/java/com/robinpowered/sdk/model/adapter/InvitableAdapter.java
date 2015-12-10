@@ -13,35 +13,30 @@ import com.robinpowered.sdk.model.Invitee;
 import java.lang.reflect.Type;
 
 /**
- * Handles adapting {@link Invitable} from string representations.
+ * Handles adapting {@link Invitable} from JSON representations.
  */
 public class InvitableAdapter implements JsonDeserializer<Invitable>, JsonSerializer<Invitable> {
 
-    /**
-     * Build an InvitableAdapter
-     */
-    public InvitableAdapter() {
-    }
-
     @Override
     public Invitable deserialize(
-        JsonElement json,
-        Type typeOfT,
-        JsonDeserializationContext context
+            JsonElement json,
+            Type typeOfT,
+            JsonDeserializationContext context
     ) throws JsonParseException {
 
-            JsonObject object = json.getAsJsonObject();
-                boolean isInvitation = object.has("email") && !object.has("id");
-                boolean isInivtee = object.has("email")
-                        && object.has("id");
+        JsonObject object = json.getAsJsonObject();
+        boolean isInvitation = object.has("email") && !object.has("id");
+        boolean isInvitee = object.has("email")
+                && object.has("id")
+                && object.has("eventId");
 
-                if (isInvitation) {
-                    return context.deserialize(object, Invitee.Invitation.class);
-                } else if (isInivtee) {
-                    return context.deserialize(object, Invitee.class);
-                }
+        if (isInvitation) {
+            return context.deserialize(object, Invitee.Invitation.class);
+        } else if (isInvitee) {
+            return context.deserialize(object, Invitee.class);
+        }
 
-        return null;
+        throw new JsonParseException("Malformed json for invitees.");
     }
 
     @Override
