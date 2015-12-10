@@ -6,8 +6,10 @@ import com.google.gson.GsonBuilder;
 import com.robinpowered.sdk.credential.Credential;
 import com.robinpowered.sdk.exception.RobinExceptionHandler;
 import com.robinpowered.sdk.model.Account;
+import com.robinpowered.sdk.model.Invitable;
 import com.robinpowered.sdk.model.Urn;
 import com.robinpowered.sdk.model.adapter.AccountReferenceAdapter;
+import com.robinpowered.sdk.model.adapter.InvitableAdapter;
 import com.robinpowered.sdk.model.adapter.JodaDateTimeAdapter;
 import com.robinpowered.sdk.model.adapter.RobinTypeAdapterFactory;
 import com.robinpowered.sdk.model.adapter.UrnAdapter;
@@ -60,6 +62,7 @@ public class RobinServiceFactory {
                 // Set our naming policy to transform underscores <-> camelCase
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .registerTypeAdapter(DateTime.class, new JodaDateTimeAdapter())
+                .registerTypeAdapter(Invitable.class, new InvitableAdapter())
                 .registerTypeAdapterFactory(new RobinTypeAdapterFactory())
                 .registerTypeAdapter(Urn.class, new UrnAdapter())
                 .registerTypeHierarchyAdapter(Account.Reference.class, new AccountReferenceAdapter())

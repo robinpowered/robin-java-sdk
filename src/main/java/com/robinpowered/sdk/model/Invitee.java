@@ -10,7 +10,7 @@ import org.joda.time.DateTime;
  *
  * @todo This class needs further design once APIs are fully realized.
  */
-public class Invitee implements IdentifiableApiResponseModel {
+public class Invitee implements IdentifiableApiResponseModel, Invitable {
 
     /**
      * Constants
@@ -223,7 +223,7 @@ public class Invitee implements IdentifiableApiResponseModel {
     /**
      * Used to invite others to an {@link Event} or {@link Event.Booking} and to become and {@link Invitee}.
      */
-    public static class Invitation {
+    public static class Invitation implements Invitable {
 
         private final String email;
 
