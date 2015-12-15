@@ -3,7 +3,13 @@ package com.robinpowered.sdk.service;
 import com.robinpowered.sdk.http.DELETE;
 import com.robinpowered.sdk.model.ApiResponse;
 import com.robinpowered.sdk.model.Event;
+import com.robinpowered.sdk.model.FreeBusySpace;
 import com.robinpowered.sdk.model.User;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
 import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -11,10 +17,6 @@ import retrofit.http.PATCH;
 import retrofit.http.POST;
 import retrofit.http.Path;
 import retrofit.http.QueryMap;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 public interface EventService {
 
@@ -91,6 +93,14 @@ public interface EventService {
     // Async
     @POST("/spaces/{spaceId}/events")
     void bookSpace(@Path("spaceId") int spaceId, @Body Event.Booking eventBooking, Callback<ApiResponse<Event>> callback);
+
+    // Sync
+    @GET("/free-busy/spaces")
+    ApiResponse<List<FreeBusySpace>> getFreeBusyForSpaces(@QueryMap Map<String, Object> options) throws IOException;
+
+    // Async
+    @GET("/free-busy/spaces")
+    void getFreeBusyForSpaces(@QueryMap Map<String, Object> options, Callback<ApiResponse<List<FreeBusySpace>>> callback);
 
 
     /**
