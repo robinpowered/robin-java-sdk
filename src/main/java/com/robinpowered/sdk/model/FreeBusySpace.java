@@ -2,6 +2,14 @@ package com.robinpowered.sdk.model;
 
 import java.util.List;
 
+/**
+ * Free-busy information returned for a given {@link Space} across a requested period of time. <p>
+ *
+ * Free-busy information describes the availability of a {@link Space} throughout a period of time
+ * by returning a set of {@link Busy} intervals which contain all events which overlap the requested
+ * period of time. The given space is available for the requested duration during any gaps between
+ * {@link Busy} models.
+ */
 public class FreeBusySpace implements ApiResponseModel, FreeBusy {
 
     /**
@@ -35,7 +43,7 @@ public class FreeBusySpace implements ApiResponseModel, FreeBusy {
         return MIME_TYPE;
     }
 
-    public boolean isHasPresence() {
+    public boolean hasPresence() {
         return hasPresence;
     }
 
