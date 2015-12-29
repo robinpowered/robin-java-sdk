@@ -12,7 +12,7 @@ import org.joda.time.DateTime;
  * automatically be synced to the space.
  *
  * <p>
- * Spaces without calendars are considered "breakout" spaces are not able to be reserved.
+ * Spaces without calendars are considered "on demand" spaces are not able to be reserved.
  */
 public class Calendar implements ApiResponseModel {
 

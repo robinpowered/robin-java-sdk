@@ -1,6 +1,7 @@
 package com.robinpowered.sdk.service;
 
 import com.robinpowered.sdk.http.DELETE;
+import com.robinpowered.sdk.model.Amenity;
 import com.robinpowered.sdk.model.ApiResponse;
 import com.robinpowered.sdk.model.Calendar;
 import com.robinpowered.sdk.model.Dibs;
@@ -117,6 +118,14 @@ public interface PlacesService {
     // Async
     @DELETE("/spaces/{id}/presence")
     void deletePresence(@Path("id") int id, @Body Presence.Occurrence presenceOccurrence, Callback<ApiResponse<Void>> callback);
+
+    // Sync
+    @GET("/spaces/{id}/amenities")
+    ApiResponse<List<Amenity>> getAmenities(@Path("id") int id, @QueryMap Map<String, Object> options) throws IOException;
+
+    // Async
+    @GET("/spaces/{id}/amenities")
+    void getAmenities(@Path("id") int id, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Amenity>>> callback);
 
 
     /**
