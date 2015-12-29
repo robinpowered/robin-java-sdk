@@ -4,7 +4,7 @@ import com.google.common.base.Objects;
 import org.joda.time.DateTime;
 
 /**
- * An amenity that may be associated to a {@link Space}.
+ * An amenity that may be associated with a {@link Space}.
  *
  * <p>
  * Amenities may be created or removed within an organization, though a default set of amenities is always present.
@@ -24,7 +24,7 @@ public class Amenity implements ApiResponseModel {
      */
 
     // Immutable
-    private final Integer id;
+    private final int id;
     private final Integer accountId;
     private final DateTime createdAt;
     private final DateTime updatedAt;
@@ -37,14 +37,14 @@ public class Amenity implements ApiResponseModel {
      * Methods
      */
 
-    public Amenity(Integer id, Integer accountId, DateTime createdAt, DateTime updatedAt) {
+    public Amenity(int id, Integer accountId, DateTime createdAt, DateTime updatedAt) {
         this.id = id;
         this.accountId = accountId;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
