@@ -1,5 +1,6 @@
 package com.robinpowered.sdk.service;
 
+import com.robinpowered.sdk.model.Amenity;
 import com.robinpowered.sdk.model.ApiResponse;
 import com.robinpowered.sdk.model.Organization;
 import com.robinpowered.sdk.model.Presence;
@@ -77,4 +78,12 @@ public interface AccountService {
     // Async
     @GET("/organizations/{id}/users")
     void getOrganizationUsers(@Path("id") Organization.Reference id, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<User>>> callback);
+
+    // Sync
+    @GET("/organizations/{id}/amenities")
+    ApiResponse<List<Amenity>> getAmenities(@Path("id") Organization.Reference id, @QueryMap Map<String, Object> options) throws IOException;
+
+    // Async
+    @GET("/organizations/{id}/amenities")
+    void getAmenities(@Path("id") Organization.Reference id, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Amenity>>> callback);
 }
