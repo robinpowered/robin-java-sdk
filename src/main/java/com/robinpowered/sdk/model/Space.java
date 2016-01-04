@@ -3,6 +3,8 @@ package com.robinpowered.sdk.model;
 import com.google.common.base.Objects;
 import org.joda.time.DateTime;
 
+import java.util.List;
+
 /**
  * A room or area in a location.
  *
@@ -45,6 +47,7 @@ public class Space implements IdentifiableApiResponseModel {
     private Calendar calendar;
     private Event currentEvent;
     private Event nextEvent;
+    private List<Amenity> amenities;
 
 
     /**
@@ -116,6 +119,14 @@ public class Space implements IdentifiableApiResponseModel {
         this.isDisabled = isDisabled;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public Boolean isDibsed() {
         return isDibsed;
     }
@@ -160,12 +171,12 @@ public class Space implements IdentifiableApiResponseModel {
         this.nextEvent = nextEvent;
     }
 
-    public String getType() {
-        return type;
+    public List<Amenity> getAmenities() {
+        return amenities;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setAmenities(List<Amenity> amenities) {
+        this.amenities = amenities;
     }
 
     @Override
@@ -204,6 +215,7 @@ public class Space implements IdentifiableApiResponseModel {
                 ", calendar=" + calendar +
                 ", currentEvent=" + currentEvent +
                 ", nextEvent=" + nextEvent +
+                ", amenities=" + amenities +
                 '}';
     }
 
