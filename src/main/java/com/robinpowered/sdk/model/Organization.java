@@ -57,23 +57,4 @@ public class Organization extends Account implements IdentifiableApiResponseMode
             super(organizationId);
         }
     }
-
-    public static final class UserAccess {
-
-        private Integer managementLevel;
-        private Boolean isOwner;
-
-        public UserAccess(Integer managementLevel, Boolean isOwner) {
-            this.managementLevel = managementLevel;
-            this.isOwner = isOwner;
-        }
-
-        public int getManagementLevel() {
-            return managementLevel;
-        }
-
-        public Boolean getOwner() {
-            return isOwner;
-        }
-    }
 }
