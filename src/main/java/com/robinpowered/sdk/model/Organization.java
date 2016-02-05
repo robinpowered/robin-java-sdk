@@ -17,11 +17,21 @@ public class Organization extends Account implements IdentifiableApiResponseMode
 
 
     /**
+     * Properties
+     */
+
+    private UserAccess userAccess;
+
+
+    /**
      * Methods
      */
 
-    public Organization(int id, String slug, boolean isOrganization, DateTime createdAt, DateTime updatedAt) {
+    public Organization(int id, String slug, boolean isOrganization, DateTime createdAt, DateTime updatedAt,
+                        UserAccess userAccess) {
         super(id, slug, isOrganization, createdAt, updatedAt);
+
+        this.userAccess = userAccess;
     }
 
     @Override
@@ -34,6 +44,10 @@ public class Organization extends Account implements IdentifiableApiResponseMode
         return "Organization{} " + super.toString();
     }
 
+    public UserAccess getUserAccess() {
+        return userAccess;
+    }
+
     public static final class Reference extends Account.Reference {
         public Reference(String slug) {
             super(slug);
@@ -41,6 +55,25 @@ public class Organization extends Account implements IdentifiableApiResponseMode
 
         public Reference(int organizationId) {
             super(organizationId);
+        }
+    }
+
+    public static final class UserAccess {
+
+        private Integer managementLevel;
+        private Boolean isOwner;
+
+        public UserAccess(Integer managementLevel, Boolean isOwner) {
+            this.managementLevel = managementLevel;
+            this.isOwner = isOwner;
+        }
+
+        public int getManagementLevel() {
+            return managementLevel;
+        }
+
+        public Boolean getOwner() {
+            return isOwner;
         }
     }
 }
