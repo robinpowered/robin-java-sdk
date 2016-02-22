@@ -25,7 +25,6 @@ public class UserOrganization extends Organization {
      * Methods
      */
 
-
     public UserOrganization(int id, String slug, boolean isOrganization, DateTime createdAt, DateTime updatedAt,
                             UserAccess userAccess) {
         super(id, slug, isOrganization, createdAt, updatedAt);
