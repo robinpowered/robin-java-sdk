@@ -3,7 +3,7 @@ package com.robinpowered.sdk.model;
 import org.joda.time.DateTime;
 
 /**
- * A company or team. Made up of users, locations and spaces.'
+ * A company or team. Made up of users, locations and spaces.
  *
  * @todo should isOrganization be exposed in this model?
  */
@@ -17,21 +17,11 @@ public class Organization extends Account implements IdentifiableApiResponseMode
 
 
     /**
-     * Properties
-     */
-
-    private UserAccess userAccess;
-
-
-    /**
      * Methods
      */
 
-    public Organization(int id, String slug, boolean isOrganization, DateTime createdAt, DateTime updatedAt,
-                        UserAccess userAccess) {
+    public Organization(int id, String slug, boolean isOrganization, DateTime createdAt, DateTime updatedAt) {
         super(id, slug, isOrganization, createdAt, updatedAt);
-
-        this.userAccess = userAccess;
     }
 
     @Override
@@ -42,10 +32,6 @@ public class Organization extends Account implements IdentifiableApiResponseMode
     @Override
     public String toString() {
         return "Organization{} " + super.toString();
-    }
-
-    public UserAccess getUserAccess() {
-        return userAccess;
     }
 
     public static final class Reference extends Account.Reference {

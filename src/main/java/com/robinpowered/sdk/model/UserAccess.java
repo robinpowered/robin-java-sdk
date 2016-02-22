@@ -17,4 +17,12 @@ public class UserAccess {
     public Boolean getOwner() {
         return isOwner;
     }
+
+    @Override
+    public String toString() {
+        return "UserAccess{" +
+                "managementLevel=" + managementLevel +
+                ", isOwner=" + isOwner +
+                "}";
+    }
 }

@@ -1,10 +1,6 @@
 package com.robinpowered.sdk.service;
 
-import com.robinpowered.sdk.model.Amenity;
-import com.robinpowered.sdk.model.ApiResponse;
-import com.robinpowered.sdk.model.Organization;
-import com.robinpowered.sdk.model.Presence;
-import com.robinpowered.sdk.model.User;
+import com.robinpowered.sdk.model.*;
 import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Path;
@@ -57,6 +53,14 @@ public interface AccountService {
     // Async
     @GET("/me/organizations")
     void getMyOrganizations(@QueryMap Map<String, Object> options, Callback<ApiResponse<List<Organization>>> callback);
+
+    // Sync
+    @GET("/me/organizations")
+    ApiResponse<List<UserOrganization>> getMyUserOrganizations(@QueryMap Map<String, Object> options) throws IOException;
+
+    // Async
+    @GET("/me/organizations")
+    void getMyUserOrganizations(@QueryMap Map<String, Object> options, Callback<ApiResponse<List<UserOrganization>>> callback);
 
 
     /**
