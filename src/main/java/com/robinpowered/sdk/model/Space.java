@@ -29,7 +29,6 @@ public class Space implements IdentifiableApiResponseModel {
     // Immutable
     private final int id;
     private final int locationId;
-    private final boolean isDibsed;
     private final DateTime createdAt;
     private final DateTime updatedAt;
 
@@ -45,8 +44,6 @@ public class Space implements IdentifiableApiResponseModel {
     // Submodels
     private Location location;
     private Calendar calendar;
-    private Event currentEvent;
-    private Event nextEvent;
     private List<Amenity> amenities;
 
 
@@ -54,10 +51,9 @@ public class Space implements IdentifiableApiResponseModel {
      * Methods
      */
 
-    public Space(int id, int locationId, boolean isDibsed, DateTime createdAt, DateTime updatedAt) {
+    public Space(int id, int locationId, DateTime createdAt, DateTime updatedAt) {
         this.id = id;
         this.locationId = locationId;
-        this.isDibsed = isDibsed;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -127,10 +123,6 @@ public class Space implements IdentifiableApiResponseModel {
         this.type = type;
     }
 
-    public Boolean isDibsed() {
-        return isDibsed;
-    }
-
     public DateTime getUpdatedAt() {
         return updatedAt;
     }
@@ -153,22 +145,6 @@ public class Space implements IdentifiableApiResponseModel {
 
     public void setCalendar(Calendar calendar) {
         this.calendar = calendar;
-    }
-
-    public Event getCurrentEvent() {
-        return currentEvent;
-    }
-
-    public void setCurrentEvent(Event currentEvent) {
-        this.currentEvent = currentEvent;
-    }
-
-    public Event getNextEvent() {
-        return nextEvent;
-    }
-
-    public void setNextEvent(Event nextEvent) {
-        this.nextEvent = nextEvent;
     }
 
     public List<Amenity> getAmenities() {
@@ -208,13 +184,10 @@ public class Space implements IdentifiableApiResponseModel {
                 ", capacity=" + capacity +
                 ", type=" + type +
                 ", isDisabled=" + isDisabled +
-                ", isDibsed=" + isDibsed +
                 ", updatedAt=" + updatedAt +
                 ", createdAt=" + createdAt +
                 ", location=" + location +
                 ", calendar=" + calendar +
-                ", currentEvent=" + currentEvent +
-                ", nextEvent=" + nextEvent +
                 ", amenities=" + amenities +
                 '}';
     }
