@@ -42,6 +42,7 @@ public class Space implements IdentifiableApiResponseModel {
     private Boolean isDisabled;
 
     // Submodels
+    private State state;
     private Location location;
     private Calendar calendar;
     private List<Amenity> amenities;
@@ -131,6 +132,14 @@ public class Space implements IdentifiableApiResponseModel {
         return createdAt;
     }
 
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
     public Location getLocation() {
         return location;
     }
@@ -162,14 +171,13 @@ public class Space implements IdentifiableApiResponseModel {
         Space space = (Space) o;
         return Objects.equal(id, space.id) &&
                 Objects.equal(locationId, space.locationId) &&
-                Objects.equal(isDibsed, space.isDibsed) &&
                 Objects.equal(createdAt, space.createdAt) &&
                 Objects.equal(updatedAt, space.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, locationId, isDibsed, createdAt, updatedAt);
+        return Objects.hashCode(id, locationId, createdAt, updatedAt);
     }
 
     @Override
@@ -195,5 +203,70 @@ public class Space implements IdentifiableApiResponseModel {
     @Override
     public String getMimeType() {
         return MIME_TYPE;
+    }
+
+    /**
+     * Represents the current state of the space, containing information about availability and whether there is
+     * presence.
+     */
+    public static class State implements ApiResponseModel {
+
+        public static final String MIME_TYPE = "vnd.robinpowered.space.state.v1";
+
+        public static final String AVAILABLE = "available";
+        public static final String BOOKED = "booked";
+        public static final String IN_USE = "in_use";
+        public static final String DISABLED = "disabled";
+
+        private final String availability;
+        private final int present;
+        private final DateTime nextBusyChange;
+
+        public State(String availability, int present, DateTime nextBusyChange) {
+            this.availability = availability;
+            this.present = present;
+            this.nextBusyChange = nextBusyChange;
+        }
+
+        public String getAvailability() {
+            return availability;
+        }
+
+        public int getPresent() {
+            return present;
+        }
+
+        public DateTime getNextBusyChange() {
+            return nextBusyChange;
+        }
+
+        @Override
+        public String getMimeType() {
+            return MIME_TYPE;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            State state = (State) o;
+            return Objects.equal(present, state.present) &&
+                    Objects.equal(availability, state.availability) &&
+                    Objects.equal(nextBusyChange, state.nextBusyChange);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hashCode(availability, present, nextBusyChange);
+        }
+
+        @Override
+        public String toString() {
+            return "State{" +
+                    "availability=" + availability +
+                    ", present=" + present +
+                    ", nextBusyChange=" + nextBusyChange +
+                    '}';
+        }
     }
 }

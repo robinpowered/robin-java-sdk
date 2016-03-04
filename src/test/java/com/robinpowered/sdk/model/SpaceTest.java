@@ -11,4 +11,11 @@ public class SpaceTest {
                 .usingGetClass()
                 .verify();
     }
+
+    @Test
+    public void testEqualsAndHashcodeForState() {
+        EqualsVerifier.forClass(Space.State.class)
+                .usingGetClass()
+                .verify();
+    }
 }
