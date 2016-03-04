@@ -19,7 +19,7 @@ public class UserOrganization extends Organization {
      * Properties
      */
 
-    private UserAccess userAccess;
+    private final UserAccess userAccess;
 
 
     /**

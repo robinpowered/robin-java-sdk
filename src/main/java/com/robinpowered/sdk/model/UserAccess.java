@@ -7,8 +7,8 @@ import com.google.common.base.Objects;
  */
 public class UserAccess {
 
-    private Integer managementLevel;
-    private Boolean isOwner;
+    private final Integer managementLevel;
+    private final Boolean isOwner;
 
     public UserAccess(Integer managementLevel, Boolean isOwner) {
         this.managementLevel = managementLevel;
