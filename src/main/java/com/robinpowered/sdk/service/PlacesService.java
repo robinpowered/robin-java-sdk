@@ -4,7 +4,6 @@ import com.robinpowered.sdk.http.DELETE;
 import com.robinpowered.sdk.model.Amenity;
 import com.robinpowered.sdk.model.ApiResponse;
 import com.robinpowered.sdk.model.Calendar;
-import com.robinpowered.sdk.model.Dibs;
 import com.robinpowered.sdk.model.Location;
 import com.robinpowered.sdk.model.Organization;
 import com.robinpowered.sdk.model.Presence;
@@ -126,17 +125,4 @@ public interface PlacesService {
     // Async
     @GET("/spaces/{id}/amenities")
     void getAmenities(@Path("id") int id, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Amenity>>> callback);
-
-
-    /**
-     * Dibs
-     */
-
-    // Sync
-    @GET("/spaces/{id}/dibs")
-    ApiResponse<Dibs> getDibs(@Path("id") int id) throws IOException;
-
-    // Async
-    @GET("/spaces/{id}/dibs")
-    void getDibs(@Path("id") int id, Callback<ApiResponse<Dibs>> callback);
 }
