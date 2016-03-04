@@ -1,9 +1,10 @@
 package com.robinpowered.sdk.model;
 
+import com.google.common.base.Objects;
 import org.joda.time.DateTime;
 
 /**
- * An {@link Organization} containing {@link UserAccess} data.
+ * An {@link Organization} entity that represents a user's membership, containing the {@link UserAccess} model.
  */
 public class UserOrganization extends Organization {
 
@@ -18,7 +19,7 @@ public class UserOrganization extends Organization {
      * Properties
      */
 
-    private UserAccess userAccess;
+    private final UserAccess userAccess;
 
 
     /**
@@ -32,17 +33,31 @@ public class UserOrganization extends Organization {
         this.userAccess = userAccess;
     }
 
+    public UserAccess getUserAccess() {
+        return userAccess;
+    }
+
     @Override
     public String getMimeType() {
         return MIME_TYPE;
     }
 
     @Override
-    public String toString() {
-        return super.toString() + " " + userAccess.toString();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        UserOrganization that = (UserOrganization) o;
+        return Objects.equal(userAccess, that.userAccess);
     }
 
-    public UserAccess getUserAccess() {
-        return userAccess;
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(super.hashCode(), userAccess);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " " + userAccess.toString();
     }
 }
