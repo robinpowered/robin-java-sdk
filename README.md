@@ -9,27 +9,28 @@ Full API documentation is available at [docs.robinpowered.com](http://docs.robin
 
 ## Download
 
-This is a pre-release "preview" library and currently only available from the
-[sonatype `snapshots` repository](https://oss.sonatype.org/content/repositories/snapshots/) and not currently in the
-Maven Central Repository.
-
-The jar is available for direct download [here](https://oss.sonatype.org/content/repositories/snapshots/com/robinpowered/robin-java-sdk/).
-
 Using Maven:
 
 ```xml
 <dependency>
   <groupId>com.robinpowered</groupId>
   <artifactId>robin-java-sdk</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
 or using Gradle:
 
 ```groovy
-compile 'com.robinpowered:robin-java-sdk:1.0.0-SNAPSHOT'
+compile 'com.robinpowered:robin-java-sdk:1.0.0'
 ```
+
+### Snapshots
+
+Snapshots are available from the
+[sonatype `snapshots` repository](https://oss.sonatype.org/content/repositories/snapshots/) 
+
+The jar is available for direct download [here](https://oss.sonatype.org/content/repositories/snapshots/com/robinpowered/robin-java-sdk/).
 
 ## Getting Started
 
