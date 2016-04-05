@@ -11,6 +11,21 @@
     <url>https://docs.robinpowered.com</url>
     <inceptionYear>2014</inceptionYear>
 
+    <description>The official Java SDK for the Robin API.</description>
+
+    <developers>
+        <developer>
+            <name>Brian Muse</name>
+            <email>brian@robinpowered.com</email>
+            <organization>Robin Powered, Inc.</organization>
+        </developer>
+        <developer>
+            <name>Christopher Mark</name>
+            <email>chris@robinpowered.com</email>
+            <organization>Robin Powered, Inc.</organization>
+        </developer>
+    </developers>
+
     <licenses>
         <license>
             <name>Apache 2.0</name>
@@ -41,6 +56,10 @@
             <id>sonatype-nexus-snapshots</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
     </distributionManagement>
 
     <issueManagement>
@@ -144,6 +163,20 @@
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
