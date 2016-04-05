@@ -24,6 +24,11 @@
             <email>chris@robinpowered.com</email>
             <organization>Robin Powered, Inc.</organization>
         </developer>
+        <developer>
+            <name>Trevor Suarez</name>
+            <email>trevor@robinpowered.com</email>
+            <organization>Robin Powered, Inc.</organization>
+        </developer>
     </developers>
 
     <licenses>
