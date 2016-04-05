@@ -88,6 +88,7 @@ public class RobinServiceFactory {
         return builder;
     }
 
+
     /**
      * Public Factories
      */
@@ -98,7 +99,7 @@ public class RobinServiceFactory {
      * @param serviceType The service class type to create.
      * @return The Robin service.
      */
-    <ServiceType> ServiceType create(Class<ServiceType> serviceType) {
+    public <ServiceType> ServiceType create(Class<ServiceType> serviceType) {
         return create(serviceType, null);
     }
 
@@ -109,7 +110,7 @@ public class RobinServiceFactory {
      * @param credential A credential used to authorize and authenticate with the service.
      * @return The Robin service.
      */
-    <ServiceType> ServiceType create(Class<ServiceType> serviceType,
+    public <ServiceType> ServiceType create(Class<ServiceType> serviceType,
             final Credential credential) {
 
         return create(serviceType, credential, null);
@@ -124,7 +125,7 @@ public class RobinServiceFactory {
      * @param httpClient The http client to use for network requests.
      * @return The Robin service.
      */
-    <ServiceType> ServiceType create(Class<ServiceType> serviceType,
+    public <ServiceType> ServiceType create(Class<ServiceType> serviceType,
             final Credential credential, final Client httpClient) {
 
         return create(serviceType, credential, httpClient, endpoint);
@@ -139,7 +140,7 @@ public class RobinServiceFactory {
      * @param httpClient The http client to use for network requests.
      * @return The Robin service.
      */
-    <ServiceType> ServiceType create(Class<ServiceType> serviceType,
+    public <ServiceType> ServiceType create(Class<ServiceType> serviceType,
             final Credential credential, final Client httpClient, final HttpUrl endpoint) {
 
         RestAdapter.Builder restAdapterBuilder = getRestAdapterBuilder();
