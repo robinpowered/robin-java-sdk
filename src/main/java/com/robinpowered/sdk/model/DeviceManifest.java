@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * A collection of meta information about a {@link Device}.
  */
-public class DeviceManifest implements IdentifiableApiResponseModel {
+public class DeviceManifest implements IdentifiableApiResponseModel<Integer> {
 
     /**
      * Constants
@@ -52,7 +52,7 @@ public class DeviceManifest implements IdentifiableApiResponseModel {
 
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -121,7 +121,7 @@ public class DeviceManifest implements IdentifiableApiResponseModel {
         return MIME_TYPE;
     }
 
-    public static class Feed implements IdentifiableApiResponseModel {
+    public static class Feed implements IdentifiableApiResponseModel<Integer> {
 
         /**
          * Constants
@@ -158,7 +158,7 @@ public class DeviceManifest implements IdentifiableApiResponseModel {
         }
 
         @Override
-        public int getId() {
+        public Integer getId() {
             return id;
         }
 

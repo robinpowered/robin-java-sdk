@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @todo This class needs further design once APIs are fully realized.
  */
-public class Event implements IdentifiableApiResponseModel {
+public class Event implements IdentifiableApiResponseModel<String> {
 
     /**
      * Constants
@@ -67,7 +67,7 @@ public class Event implements IdentifiableApiResponseModel {
      * Properties
      */
 
-    private final int id;
+    private final String id;
     private Integer organizerId;
     private String organizerEmail;
     private Integer creatorId;
@@ -89,12 +89,12 @@ public class Event implements IdentifiableApiResponseModel {
      * Methods
      */
 
-    public Event(int id) {
+    public Event(String id) {
         this.id = id;
     }
 
     @Override
-    public int getId() {
+    public String getId() {
         return id;
     }
 

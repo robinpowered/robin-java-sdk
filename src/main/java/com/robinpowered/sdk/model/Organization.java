@@ -7,7 +7,7 @@ import org.joda.time.DateTime;
  *
  * @todo should isOrganization be exposed in this model?
  */
-public class Organization extends Account implements IdentifiableApiResponseModel {
+public class Organization extends Account implements IdentifiableApiResponseModel<Integer> {
 
     /**
      * Constants

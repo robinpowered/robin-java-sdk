@@ -13,7 +13,7 @@ import java.util.List;
  * controlled, such as AV hardware or a thermostat. Common devices include beacons, phones, and
  * motion sensors.
  */
-public class Device implements IdentifiableApiResponseModel {
+public class Device implements IdentifiableApiResponseModel<Integer> {
 
     /**
      * Constants
@@ -55,7 +55,7 @@ public class Device implements IdentifiableApiResponseModel {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

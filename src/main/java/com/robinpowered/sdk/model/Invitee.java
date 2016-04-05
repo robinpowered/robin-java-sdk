@@ -10,7 +10,7 @@ import org.joda.time.DateTime;
  *
  * @todo This class needs further design once APIs are fully realized.
  */
-public class Invitee implements IdentifiableApiResponseModel, Invitable {
+public class Invitee implements IdentifiableApiResponseModel<Integer>, Invitable {
 
     /**
      * Constants
@@ -78,7 +78,7 @@ public class Invitee implements IdentifiableApiResponseModel, Invitable {
 
     // Immutable
     private final int id;
-    private final int eventId;
+    private final String eventId;
 
     // Mutable
     private Integer userId;
@@ -98,17 +98,17 @@ public class Invitee implements IdentifiableApiResponseModel, Invitable {
      * Methods
      */
 
-    public Invitee(int id, int eventId) {
+    public Invitee(int id, String eventId) {
         this.id = id;
         this.eventId = eventId;
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public Integer getEventId() {
+    public String getEventId() {
         return eventId;
     }
 

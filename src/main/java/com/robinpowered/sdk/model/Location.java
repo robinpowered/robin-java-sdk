@@ -10,7 +10,7 @@ import org.joda.time.DateTime;
  * Physically speaking, a location is typically an office or a building and can be associated to a
  * specific physical address.
  */
-public class Location implements IdentifiableApiResponseModel {
+public class Location implements IdentifiableApiResponseModel<Integer> {
 
     /**
      * Constants
@@ -50,7 +50,7 @@ public class Location implements IdentifiableApiResponseModel {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

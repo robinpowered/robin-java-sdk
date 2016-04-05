@@ -1,7 +1,6 @@
 package com.robinpowered.sdk.model;
 
 import com.google.common.base.Objects;
-
 import org.joda.time.DateTime;
 
 /**
@@ -24,7 +23,7 @@ public class SimpleEvent implements ApiResponseModel {
      * Properties
      */
 
-    private int id;
+    private String id;
     private DateTime startedAt;
     private DateTime endedAt;
 
@@ -40,7 +39,7 @@ public class SimpleEvent implements ApiResponseModel {
      * @param startedAt When the event started.
      * @param endedAt When the event ended.
      */
-    public SimpleEvent(int id, DateTime startedAt, DateTime endedAt) {
+    public SimpleEvent(String id, DateTime startedAt, DateTime endedAt) {
         this.id = id;
         this.startedAt = startedAt;
         this.endedAt = endedAt;
@@ -58,7 +57,7 @@ public class SimpleEvent implements ApiResponseModel {
         return MIME_TYPE;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

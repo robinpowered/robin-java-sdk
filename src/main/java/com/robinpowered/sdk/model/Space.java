@@ -13,7 +13,7 @@ import java.util.List;
  * they are the parent model of a {@link Device}, {@link Presence} or {@link Event}. The space model
  * contains references to the current and next events if they exist, as well as its parent location.
  */
-public class Space implements IdentifiableApiResponseModel {
+public class Space implements IdentifiableApiResponseModel<Integer> {
 
     /**
      * Constants
@@ -60,7 +60,7 @@ public class Space implements IdentifiableApiResponseModel {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
