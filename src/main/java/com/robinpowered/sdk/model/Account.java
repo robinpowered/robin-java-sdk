@@ -6,7 +6,7 @@ import org.joda.time.DateTime;
 /**
  * A base class for a {@link User} or {@link Organization}.
  */
-abstract public class Account implements IdentifiableApiResponseModel {
+abstract public class Account implements IdentifiableApiResponseModel<Integer> {
 
     /**
      * Constants
@@ -44,7 +44,7 @@ abstract public class Account implements IdentifiableApiResponseModel {
     }
 
     @Override
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

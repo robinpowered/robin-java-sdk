@@ -5,11 +5,6 @@ import com.robinpowered.sdk.model.ApiResponse;
 import com.robinpowered.sdk.model.Event;
 import com.robinpowered.sdk.model.FreeBusySpace;
 import com.robinpowered.sdk.model.User;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-
 import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -18,31 +13,35 @@ import retrofit.http.POST;
 import retrofit.http.Path;
 import retrofit.http.QueryMap;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
 public interface EventService {
 
     // Sync
     @GET("/events/{eventId}")
-    ApiResponse<Event> getEvent(@Path("eventId") int eventId, @QueryMap Map<String, Object> options) throws IOException;
+    ApiResponse<Event> getEvent(@Path("eventId") String eventId, @QueryMap Map<String, Object> options) throws IOException;
 
     // Async
     @GET("/events/{eventId}")
-    void getEvent(@Path("eventId") int eventId, @QueryMap Map<String, Object> options, Callback<ApiResponse<Event>> callback);
+    void getEvent(@Path("eventId") String eventId, @QueryMap Map<String, Object> options, Callback<ApiResponse<Event>> callback);
 
     // Sync
     @PATCH("/events/{eventId}")
-    ApiResponse<Event> updateEvent(@Path("eventId") int eventId, @Body Event event) throws IOException;
+    ApiResponse<Event> updateEvent(@Path("eventId") String eventId, @Body Event event) throws IOException;
 
     // Async
     @PATCH("/events/{eventId}")
-    void updateEvent(@Path("eventId") int eventId, @Body Event event, Callback<ApiResponse<Event>> callback);
+    void updateEvent(@Path("eventId") String eventId, @Body Event event, Callback<ApiResponse<Event>> callback);
 
     // Sync
     @DELETE("/events/{eventId}")
-    ApiResponse<Void> deleteEvent(@Path("eventId") int eventId) throws IOException;
+    ApiResponse<Void> deleteEvent(@Path("eventId") String eventId) throws IOException;
 
     // Async
     @DELETE("/events/{eventId}")
-    void deleteEvent(@Path("eventId") int eventId, Callback<ApiResponse<Void>> callback);
+    void deleteEvent(@Path("eventId") String eventId, Callback<ApiResponse<Void>> callback);
 
 
     /**
