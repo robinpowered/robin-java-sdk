@@ -76,6 +76,30 @@ public interface DeviceService {
     @GET("/devices/{urn}/spaces")
     void getSpacesForDevice(@Path("urn") Urn urn, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Space>>> callback);
 
+    // Sync
+    @GET("/spaces/{id}/devices")
+    ApiResponse<List<Device>> getDevicesForSpace(@Path("id") int id, @QueryMap Map<String, Object> options) throws IOException;
+
+    // Async
+    @GET("/spaces/{id}/devices")
+    void getDevicesForSpace(@Path("id") int id, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Device>>> callback);
+
+    // Sync
+    @GET("/locations/{id}/devices")
+    ApiResponse<List<Device>> getDevicesForLocation(@Path("id") int id, @QueryMap Map<String, Object> options) throws IOException;
+
+    // Async
+    @GET("/locations/{id}/devices")
+    void getDevicesForLocation(@Path("id") int id, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Device>>> callback);
+
+    // Sync
+    @GET("/organizations/{id}/devices")
+    ApiResponse<List<Device>> getDevicesForOrganization(@Path("id") int id, @QueryMap Map<String, Object> options) throws IOException;
+
+    // Async
+    @GET("/organizations/{id}/devices")
+    void getDevicesForOrganization(@Path("id") int id, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Device>>> callback);
+
 
     /**
      * Device Manifests

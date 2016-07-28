@@ -72,6 +72,9 @@ public class Identifier implements ApiResponseModel {
     private final String value;
     private final DateTime createdAt;
 
+    // Mutable
+    private Integer deviceId;
+
 
     /**
      * Methods
@@ -98,6 +101,14 @@ public class Identifier implements ApiResponseModel {
 
     public DateTime getCreatedAt() {
         return createdAt;
+    }
+
+    public Integer getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(Integer deviceId) {
+        this.deviceId = deviceId;
     }
 
     @Override

@@ -39,6 +39,7 @@ public class Device implements IdentifiableApiResponseModel<Integer> {
 
     // Submodel
     private List<Identifier> identifiers;
+    private Space space;
 
 
     /**
@@ -89,6 +90,10 @@ public class Device implements IdentifiableApiResponseModel<Integer> {
 
     public List<Identifier> getIdentifiers() {
         return identifiers;
+    }
+
+    public Space getSpace() {
+        return space;
     }
 
     public void setIdentifiers(List<Identifier> identifiers) {
