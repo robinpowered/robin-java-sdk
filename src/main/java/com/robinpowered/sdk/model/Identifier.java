@@ -14,56 +14,9 @@ import org.joda.time.DateTime;
  *
  * @see com.robinpowered.sdk.model.Identifier.Interface
  */
-public class Identifier implements ApiResponseModel {
-
-    /**
-     * Constants
-     */
+public class Identifier implements ApiResponseModel, Identifiable {
 
     public static final String MIME_TYPE = "vnd.robinpowered.identifier.v1";
-
-    /**
-     * Robin identifier interface types
-     */
-    public enum Interface {
-
-        @SerializedName("ble")
-        BLE("ble"),
-
-        @SerializedName("rfid")
-        RFID("rfid"),
-
-        @SerializedName("robin-uuid")
-        ROBIN_UUID("robin-uuid"),
-
-        @SerializedName("robin-ibeacon")
-        ROBIN_IBEACON("robin-ibeacon"),
-
-        @SerializedName("arduino")
-        ARDUINO("arduino"),
-
-        @SerializedName("relay")
-        RELAY("relay");
-
-        private final String value;
-
-        public String getValue() {
-            return value;
-        }
-
-        public static Interface fromString(String value) {
-            return valueOf(value.toUpperCase().replace('-', '_'));
-        }
-
-        Interface(String value) {
-            this.value = value;
-        }
-    }
-
-
-    /**
-     * Properties
-     */
 
     // Immutable
     private final Urn urn;
@@ -71,14 +24,6 @@ public class Identifier implements ApiResponseModel {
     private final Interface type; // Use a non-Java-keyword for our field name
     private final String value;
     private final DateTime createdAt;
-
-    // Mutable
-    private Integer deviceId;
-
-
-    /**
-     * Methods
-     */
 
     public Identifier(Urn urn, Interface type, String value, DateTime createdAt) {
         this.urn = urn;
@@ -101,14 +46,6 @@ public class Identifier implements ApiResponseModel {
 
     public DateTime getCreatedAt() {
         return createdAt;
-    }
-
-    public Integer getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(Integer deviceId) {
-        this.deviceId = deviceId;
     }
 
     @Override
