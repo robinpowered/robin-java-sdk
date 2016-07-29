@@ -100,6 +100,10 @@ public class Device implements IdentifiableApiResponseModel<Integer> {
         this.identifiers = identifiers;
     }
 
+    public void setSpace(Space space) {
+        this.space = space;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
