@@ -7,7 +7,7 @@ import org.joda.time.DateTime;
 /**
  * A model that represents an abstract means of identifying an iBeacon {@link Device}.
  */
-public class IbeaconIdentifier implements Identifiable {
+public class IbeaconIdentifier implements Identifier {
 
     private final Urn urn;
     @SerializedName("interface")

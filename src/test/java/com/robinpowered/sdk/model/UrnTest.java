@@ -55,7 +55,7 @@ public class UrnTest {
     @Test
     public void testCreate2() throws Exception {
         mockStatic(Urn.class, Mockito.CALLS_REAL_METHODS);
-        Identifier.Interface identifierType = Identifier.Interface.BLE;
+        BasicIdentifier.Interface identifierType = BasicIdentifier.Interface.BLE;
         String nss = "abc";
 
         doReturn(new Urn(URI.create("urn" + ":" + identifierType.getValue() + ":" + nss)))

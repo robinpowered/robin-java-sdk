@@ -6,11 +6,11 @@ import com.google.gson.GsonBuilder;
 import com.robinpowered.sdk.credential.Credential;
 import com.robinpowered.sdk.exception.RobinExceptionHandler;
 import com.robinpowered.sdk.model.Account;
-import com.robinpowered.sdk.model.Identifiable;
+import com.robinpowered.sdk.model.Identifier;
 import com.robinpowered.sdk.model.Invitable;
 import com.robinpowered.sdk.model.Urn;
 import com.robinpowered.sdk.model.adapter.AccountReferenceAdapter;
-import com.robinpowered.sdk.model.adapter.IdentifiableAdapter;
+import com.robinpowered.sdk.model.adapter.IdentifierAdapter;
 import com.robinpowered.sdk.model.adapter.InvitableAdapter;
 import com.robinpowered.sdk.model.adapter.JodaDateTimeAdapter;
 import com.robinpowered.sdk.model.adapter.RobinTypeAdapterFactory;
@@ -65,7 +65,7 @@ public class RobinServiceFactory {
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .registerTypeAdapter(DateTime.class, new JodaDateTimeAdapter())
                 .registerTypeAdapter(Invitable.class, new InvitableAdapter())
-                .registerTypeAdapter(Identifiable.class, new IdentifiableAdapter())
+                .registerTypeAdapter(Identifier.class, new IdentifierAdapter())
                 .registerTypeAdapterFactory(new RobinTypeAdapterFactory())
                 .registerTypeAdapter(Urn.class, new UrnAdapter())
                 .registerTypeHierarchyAdapter(Account.Reference.class, new AccountReferenceAdapter())

@@ -1,6 +1,7 @@
 package com.robinpowered.sdk.service;
 
 import com.robinpowered.sdk.model.ApiResponse;
+import com.robinpowered.sdk.model.BasicIdentifier;
 import com.robinpowered.sdk.model.Device;
 import com.robinpowered.sdk.model.DeviceManifest;
 import com.robinpowered.sdk.model.Identifier;
