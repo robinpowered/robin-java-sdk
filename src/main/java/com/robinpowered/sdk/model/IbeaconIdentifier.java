@@ -1,5 +1,6 @@
 package com.robinpowered.sdk.model;
 
+import com.google.common.base.Objects;
 import com.google.gson.annotations.SerializedName;
 
 import org.joda.time.DateTime;
@@ -7,7 +8,9 @@ import org.joda.time.DateTime;
 /**
  * A model that represents an abstract means of identifying an iBeacon {@link Device}.
  */
-public class IbeaconIdentifier implements Identifier {
+public class IbeaconIdentifier implements ApiResponseModel, Identifier {
+
+    public static final String MIME_TYPE = "vnd.robinpowered.identifier.ibeacon.v1";
 
     private final Urn urn;
     @SerializedName("interface")
@@ -61,5 +64,44 @@ public class IbeaconIdentifier implements Identifier {
 
     public String getUuid() {
         return uuid;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        IbeaconIdentifier that = (IbeaconIdentifier) o;
+        return Objects.equal(urn, that.urn) &&
+                Objects.equal(type, that.type) &&
+                Objects.equal(value, that.value) &&
+                Objects.equal(createdAt, that.createdAt) &&
+                Objects.equal(deviceId, that.deviceId) &&
+                Objects.equal(major, that.major) &&
+                Objects.equal(minor, that.minor) &&
+                Objects.equal(uuid, that.uuid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(urn, type, value, createdAt, deviceId, major, minor, uuid);
+    }
+
+    @Override
+    public String toString() {
+        return "BasicIdentifier{" +
+                "urn=" + urn +
+                ", type=" + type +
+                ", value='" + value + '\'' +
+                ", createdAt=" + createdAt +
+                ", deviceId=" + deviceId +
+                ", major=" + major +
+                ", minor=" + minor +
+                ", uuid=" + uuid +
+                '}';
+    }
+
+    @Override
+    public String getMimeType() {
+        return MIME_TYPE;
     }
 }
