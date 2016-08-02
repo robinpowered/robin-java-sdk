@@ -7,7 +7,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 /**
- * A Urn, used commonly by {@link Identifier} and {@link Device} models.
+ * A Urn, used commonly by {@link BasicIdentifier} and {@link Device} models.
  */
 public class Urn {
 
@@ -49,7 +49,7 @@ public class Urn {
     }
 
     /**
-     * Creates a {@link Urn} from an {@link com.robinpowered.sdk.model.Identifier.Interface} and
+     * Creates a {@link Urn} from an {@link BasicIdentifier.Interface} and
      * an NSS.
      *
      * @param identifierInterface The identifier interface to use as an NID.
@@ -57,7 +57,7 @@ public class Urn {
      * @return A new Urn instance.
      * @throws URISyntaxException
      */
-    public static Urn create(Identifier.Interface identifierInterface, String nss)
+    public static Urn create(BasicIdentifier.Interface identifierInterface, String nss)
             throws URISyntaxException {
 
         return create("urn" + ":" + identifierInterface.getValue() + ":" + nss);

@@ -1,13 +1,14 @@
 package com.robinpowered.sdk.model;
 
-import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.Test;
 
-public class IdentifierTest {
+import nl.jqno.equalsverifier.EqualsVerifier;
+
+public class IbeaconIdentifierTest {
 
     @Test
     public void testEqualsAndHashcode() {
-        EqualsVerifier.forClass(Identifier.class)
+        EqualsVerifier.forClass(IbeaconIdentifier.class)
                 .usingGetClass()
                 .verify();
     }
