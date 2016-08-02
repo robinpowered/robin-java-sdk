@@ -92,12 +92,12 @@ public class Device implements IdentifiableApiResponseModel<Integer> {
         return identifiers;
     }
 
-    public Space getSpace() {
-        return space;
-    }
-
     public void setIdentifiers(List<Identifier> identifiers) {
         this.identifiers = identifiers;
+    }
+
+    public Space getSpace() {
+        return space;
     }
 
     public void setSpace(Space space) {
