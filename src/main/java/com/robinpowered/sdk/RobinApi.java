@@ -125,6 +125,15 @@ public class RobinApi {
     }
 
     /**
+     * Returns the credential.
+     *
+     * @return The credential.
+     */
+    public Credential getCredential() {
+        return credential;
+    }
+
+    /**
      * Returns whether a credential has been set or not.
      *
      * @return Whether a credential has been set or not.

@@ -1,5 +1,6 @@
 package com.robinpowered.sdk;
 
+import com.robinpowered.sdk.credential.AccessTokenCredential;
 import com.robinpowered.sdk.credential.Credential;
 import com.robinpowered.sdk.service.MockService;
 import org.junit.Test;
@@ -17,6 +18,8 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class RobinApiTest
 {
+    private final String testToken = "abcd";
+
     @Mock private RobinServiceFactory robinServiceFactory;
     @Mock private OkClient client;
 
@@ -24,7 +27,7 @@ public class RobinApiTest
     public void testConstructors()
     {
         // Create mock
-        Credential credential = mock(Credential.class);
+        Credential credential = new AccessTokenCredential(testToken);
 
         RobinApi robinApi = new RobinApi();
         assertThat(robinApi.credential).isNull();
@@ -48,7 +51,7 @@ public class RobinApiTest
     {
         // Create mocks
         MockService serviceMock = mock(MockService.class);
-        Credential credential = mock(Credential.class);
+        Credential credential = new AccessTokenCredential(testToken);
 
         // Spy on the factory's create method.
         when(robinServiceFactory.create(MockService.class, credential, client))
@@ -80,7 +83,7 @@ public class RobinApiTest
     {
         // Create mocks
         MockService serviceMock = mock(MockService.class);
-        Credential credential = mock(Credential.class);
+        Credential credential = new AccessTokenCredential(testToken);
 
         RobinApi robinApi = new RobinApi();
 
@@ -94,18 +97,15 @@ public class RobinApiTest
     }
 
     @Test
-    public void testHasCredential()
+    public void testGetCredential()
     {
         // Create mock
-        Credential credential = mock(Credential.class);
+        Credential credentialMock = mock(Credential.class);
 
-        RobinApi robinApi = new RobinApi();
+        RobinApi robinApi = new RobinApi(credentialMock);
 
-        assertThat(robinApi.hasCredential()).isFalse();
+        Credential credential = robinApi.getCredential();
 
-        // Set the credential
-        robinApi.credential = credential;
-
-        assertThat(robinApi.hasCredential()).isTrue();
+        assertThat(credential).isEqualTo(credentialMock);
     }
 }

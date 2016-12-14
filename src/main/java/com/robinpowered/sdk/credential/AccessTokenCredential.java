@@ -23,6 +23,10 @@ public class AccessTokenCredential implements Credential {
      */
 
     public AccessTokenCredential(String token) {
+        if (token == null) {
+            throw new IllegalArgumentException("The token cannot be null.");
+        }
+
         this.token = token;
     }
 

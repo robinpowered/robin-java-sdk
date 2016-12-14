@@ -31,6 +31,10 @@ public class Token implements ApiResponseModel {
      * @param accessToken An access token.
      */
     public Token(String accessToken) {
+        if (accessToken == null) {
+            throw new IllegalArgumentException("The access token cannot be null");
+        }
+
         this.accessToken = accessToken;
     }
 
