@@ -28,9 +28,17 @@ public class Invitee implements IdentifiableApiResponseModel<Integer>, Invitable
 
         /**
          * The person's response is unknown or not yet set.
+         * @deprecated Use {@link ResponseStatus#UNKNOWN} instead.
          */
+        @Deprecated
         @SerializedName("none")
         NONE("none"),
+
+        /**
+         * The person's response is unknown.
+         */
+        @SerializedName("unknown")
+        UNKNOWN("unknown"),
 
         /**
          * The person has not responded to the event invite.
@@ -49,6 +57,12 @@ public class Invitee implements IdentifiableApiResponseModel<Integer>, Invitable
          */
         @SerializedName("tentative")
         TENTATIVE("tentative"),
+
+        /**
+         * The person has has delegated attendance to another person.
+         */
+        @SerializedName("delegated")
+        DELEGATED("delegated"),
 
         /**
          * The person has accepted the event invite.
