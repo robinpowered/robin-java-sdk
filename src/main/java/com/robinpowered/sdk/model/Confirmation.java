@@ -1,5 +1,6 @@
 package com.robinpowered.sdk.model;
 
+import com.google.common.base.Objects;
 import org.joda.time.DateTime;
 
 /**
@@ -9,15 +10,15 @@ public class Confirmation {
 
     public static final String MIME_TYPE = "vnd.robinpowered.confirmation.v1";
 
-    private String eventId;
-    private Integer user_id;
-    private Integer device_id;
-    private DateTime confirmedAt;
+    private final String eventId;
+    private final Integer userId;
+    private final Integer deviceId;
+    private final DateTime confirmedAt;
 
-    public Confirmation(String eventId, Integer user_id, Integer device_id, DateTime confirmedAt) {
+    public Confirmation(String eventId, Integer userId, Integer deviceId, DateTime confirmedAt) {
         this.eventId = eventId;
-        this.user_id = user_id;
-        this.device_id = device_id;
+        this.userId = userId;
+        this.deviceId = deviceId;
         this.confirmedAt = confirmedAt;
     }
 
@@ -25,15 +26,31 @@ public class Confirmation {
         return eventId;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public Integer getDevice_id() {
-        return device_id;
+    public Integer getDeviceId() {
+        return deviceId;
     }
 
     public DateTime getConfirmedAt() {
         return confirmedAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Confirmation that = (Confirmation) o;
+        return Objects.equal(eventId, that.eventId) &&
+                Objects.equal(userId, that.userId) &&
+                Objects.equal(deviceId, that.deviceId) &&
+                Objects.equal(confirmedAt, that.confirmedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(eventId, userId, deviceId, confirmedAt);
     }
 }
