@@ -45,12 +45,12 @@ public interface EventService {
     // Sync
     // Mandatory deviceId fixes crash with null bodies: https://github.com/square/retrofit/issues/854
     @PUT("/events/{eventId}/confirmation")
-    ApiResponse<Event> confirmEvent(@Path("eventId") String eventId, @Body User.DeviceId deviceId) throws IOException;
+    ApiResponse<Event> confirmEvent(@Path("eventId") String eventId, @Body int deviceId) throws IOException;
 
     // Async
     // Mandatory deviceId fixes crash with null bodies: https://github.com/square/retrofit/issues/854
     @PUT("/events/{eventId}/confirmation")
-    void confirmEvent(@Path("eventId") String eventId, @Body User.DeviceId deviceId, Callback<ApiResponse<Event>> callback);
+    void confirmEvent(@Path("eventId") String eventId, @Body int deviceId, Callback<ApiResponse<Event>> callback);
 
     // Sync
     @DELETE("/events/{eventId}/confirmation")

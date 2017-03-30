@@ -163,16 +163,4 @@ public class User extends Account implements IdentifiableApiResponseModel<Intege
             super(userId);
         }
     }
-
-    public static class DeviceId {
-        private Integer deviceId;
-
-        public DeviceId(Integer deviceId) {
-            this.deviceId = deviceId;
-        }
-
-        public Integer getDeviceId() {
-            return deviceId;
-        }
-    }
 }
