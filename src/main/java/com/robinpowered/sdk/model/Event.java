@@ -83,6 +83,7 @@ public class Event implements IdentifiableApiResponseModel<String> {
     private DateTime endedAt;
     private Boolean isAllDay;
     private List<Invitable> invitees;
+    private Confirmation confirmation;
 
 
     /**
@@ -213,6 +214,11 @@ public class Event implements IdentifiableApiResponseModel<String> {
     public void setInvitees(List<Invitable> invitees) {
         this.invitees = invitees;
     }
+
+    public Confirmation getConfirmation() {
+        return confirmation;
+    }
+
 
     /**
      * Returns a list of the event's invitees. This may return {@code null} if the {@code invitees}
