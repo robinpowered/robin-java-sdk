@@ -1,10 +1,7 @@
 package com.robinpowered.sdk.service;
 
 import com.robinpowered.sdk.http.DELETE;
-import com.robinpowered.sdk.model.ApiResponse;
-import com.robinpowered.sdk.model.Event;
-import com.robinpowered.sdk.model.FreeBusySpace;
-import com.robinpowered.sdk.model.User;
+import com.robinpowered.sdk.model.*;
 import retrofit.Callback;
 import retrofit.http.*;
 
@@ -45,12 +42,12 @@ public interface EventService {
     // Sync
     // Mandatory deviceId fixes crash with null bodies: https://github.com/square/retrofit/issues/854
     @PUT("/events/{eventId}/confirmation")
-    ApiResponse<Event> confirmEvent(@Path("eventId") String eventId, @Body int deviceId) throws IOException;
+    ApiResponse<Confirmation> confirmEvent(@Path("eventId") String eventId, @Body Confirmation confirmation) throws IOException;
 
     // Async
     // Mandatory deviceId fixes crash with null bodies: https://github.com/square/retrofit/issues/854
     @PUT("/events/{eventId}/confirmation")
-    void confirmEvent(@Path("eventId") String eventId, @Body int deviceId, Callback<ApiResponse<Event>> callback);
+    void confirmEvent(@Path("eventId") String eventId, @Body Confirmation confirmation, Callback<ApiResponse<Confirmation>> callback);
 
     // Sync
     @DELETE("/events/{eventId}/confirmation")
