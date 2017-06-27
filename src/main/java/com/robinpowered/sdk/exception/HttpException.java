@@ -48,7 +48,9 @@ public class HttpException extends IOException {
             String responseMessage = null;
             if (error.getBody() instanceof ApiResponse) {
                 ApiResponse body = (ApiResponse) error.getBody();
-                responseMessage = body.getMeta().getMessage();
+                if (body.getMeta() != null) {
+                    responseMessage = body.getMeta().getMessage();
+                }
             }
 
             // Build our message
