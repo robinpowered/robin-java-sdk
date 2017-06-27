@@ -1,5 +1,6 @@
 package com.robinpowered.sdk.exception;
 
+import com.robinpowered.sdk.model.ApiResponse;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
@@ -44,12 +45,18 @@ public class HttpException extends IOException {
         Response response = error != null ? error.getResponse() : null;
 
         if (response != null) {
-            int statusCode = response.getStatus();
+            String responseMessage = null;
+            if (error.getBody() instanceof ApiResponse) {
+                ApiResponse body = (ApiResponse) error.getBody();
+                responseMessage = body.getMeta().getMessage();
+            }
 
             // Build our message
             String message = "Status Code: " + response.getStatus()
                     + "; URL: " + response.getUrl()
-                    + ";";
+                    + "; Message: " + responseMessage;
+
+            int statusCode = response.getStatus();
 
             if (isClientError(response)) {
                 exception = new ClientErrorResponseException(message, error, statusCode);
