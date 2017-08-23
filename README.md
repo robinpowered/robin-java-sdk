@@ -25,7 +25,14 @@ or using Gradle:
 compile 'com.robinpowered:robin-java-sdk:1.0.0'
 ```
 
-### Snapshots
+## Compile locally
+```
+mvn clean package
+```
+
+Locally compiled .jar file will be placed in the `target` directory.
+
+## Snapshots
 
 Snapshots are available from the
 [sonatype `snapshots` repository](https://oss.sonatype.org/content/repositories/snapshots/) 
