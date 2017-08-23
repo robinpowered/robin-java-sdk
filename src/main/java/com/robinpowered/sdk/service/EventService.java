@@ -40,6 +40,14 @@ public interface EventService {
      */
 
     // Sync
+    @GET("/events/{eventId}/confirmation")
+    ApiResponse<Confirmation> getEventConfirmation(@Path("eventId") String eventId) throws IOException;
+
+    // Async
+    @GET("/events/{eventId}/confirmation")
+    void getEventConfirmation(@Path("eventId") String eventId, Callback<ApiResponse<Confirmation>> callback);
+
+    // Sync
     // Mandatory deviceId fixes crash with null bodies: https://github.com/square/retrofit/issues/854
     @PUT("/events/{eventId}/confirmation")
     ApiResponse<Confirmation> confirmEvent(@Path("eventId") String eventId, @Body Confirmation confirmation) throws IOException;
