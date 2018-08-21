@@ -62,20 +62,20 @@ public interface DeviceService {
     void addIdentifierToDevice(@Path("id") int id, @Body Identifier identifier, Callback<ApiResponse<Identifier>> callback);
 
     // Sync
-    @GET("/devices/{id}/spaces")
-    ApiResponse<List<Space>> getSpacesForDevice(@Path("id") int id, @QueryMap Map<String, Object> options) throws IOException;
+    @GET("/devices/{id}/space")
+    ApiResponse<Space> getSpaceForDevice(@Path("id") int id, @QueryMap Map<String, Object> options) throws IOException;
 
     // Async
-    @GET("/devices/{id}/spaces")
-    void getSpacesForDevice(@Path("id") int id, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Space>>> callback);
+    @GET("/devices/{id}/space")
+    void getSpaceForDevice(@Path("id") int id, @QueryMap Map<String, Object> options, Callback<ApiResponse<Space>> callback);
 
     // Sync
-    @GET("/devices/{urn}/spaces")
-    ApiResponse<List<Space>> getSpacesForDevice(@Path("urn") Urn urn, @QueryMap Map<String, Object> options) throws IOException;
+    @GET("/devices/{urn}/space")
+    ApiResponse<Space> getSpaceForDevice(@Path("urn") Urn urn, @QueryMap Map<String, Object> options) throws IOException;
 
     // Async
-    @GET("/devices/{urn}/spaces")
-    void getSpacesForDevice(@Path("urn") Urn urn, @QueryMap Map<String, Object> options, Callback<ApiResponse<List<Space>>> callback);
+    @GET("/devices/{urn}/space")
+    void getSpaceForDevice(@Path("urn") Urn urn, @QueryMap Map<String, Object> options, Callback<ApiResponse<Space>> callback);
 
     // Sync
     @GET("/spaces/{id}/devices")
