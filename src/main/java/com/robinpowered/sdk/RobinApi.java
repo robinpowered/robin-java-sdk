@@ -1,7 +1,9 @@
 package com.robinpowered.sdk;
 
 import com.robinpowered.sdk.credential.Credential;
+
 import retrofit.client.Client;
+import com.squareup.okhttp.HttpUrl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -62,6 +64,18 @@ public class RobinApi {
     public RobinApi(Client httpClient) {
         this.httpClient = httpClient;
     }
+
+    /**
+     * Constructor.
+     *
+     * @param httpClient An HTTP client for performing network requests.
+     * @param endpoint The endpoint used to contact the API.
+     */
+    public RobinApi(Client httpClient, HttpUrl endpoint) {
+        this.httpClient = httpClient;
+        this.serviceFactory = new RobinServiceFactory(endpoint);
+    }
+
 
     /**
      * Constructor.
