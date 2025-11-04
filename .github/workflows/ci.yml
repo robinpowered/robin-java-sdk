@@ -1,0 +1,113 @@
+name: Robin SDK CI
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+  release:
+    types: [ published ] # Trigger when a release is published in the GitHub UI
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '7', '8' ]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: 'temurin'
+
+      - name: Build and Test with Maven
+        # Run tests for all PRs and pushes to main to ensure code quality.
+        run: mvn -B clean package --file pom.xml
+
+  publish-snapshot:
+    name: Publish Snapshot
+    needs: build
+    runs-on: ubuntu-latest
+    # This job runs only on direct pushes to the main branch.
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+
+      - name: Publish Snapshot to GitHub Packages
+        # Tests are skipped here because the build job already ran them.
+        run: mvn clean source:jar javadoc:jar deploy -DskipTests=true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-release:
+    name: Publish Release
+    needs: build
+    runs-on: ubuntu-latest
+    # This job runs only when a release is published on GitHub.
+    if: github.event_name == 'release'
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+
+      - name: Get version from release tag
+        # Extracts the version number from the release's tag (e.g., v1.1.0 -> 1.1.0)
+        run: echo "RELEASE_VERSION=$(echo ${{ github.event.release.tag_name }} | sed -e 's/v//')" >> $GITHUB_ENV
+
+      - name: Set project version
+        # Use the Maven Versions Plugin to set the version in the pom.xml.
+        run: mvn versions:set -DnewVersion=${{ env.RELEASE_VERSION }} -DgenerateBackupPoms=false
+
+      - name: Publish Release to GitHub Packages
+        # This deploys the finalized release version of the package.
+        run: mvn clean source:jar javadoc:jar deploy -DskipTests=true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-github-pages:
+    name: Publish Javadoc
+    needs: build
+    runs-on: ubuntu-latest
+    # This job publishes Javadoc for both snapshots (main pushes) and releases.
+    if: (github.ref == 'refs/heads/main' && github.event_name == 'push') || github.event_name == 'release'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+
+      - name: Generate Javadoc
+        run: mvn javadoc:javadoc
+
+      - name: Deploy Javadoc to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/site/apidocs
+          user_name: 'github-actions[bot]'
+          user_email: '41898282+github-actions[bot]@users.noreply.github.com'
+          commit_message: "Latest Javadoc from ${{ github.ref }}"

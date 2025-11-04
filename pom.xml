@@ -50,26 +50,23 @@
     </properties>
 
     <scm>
-        <url>http://github.com/robinpowered/robin-java-sdk</url>
+        <url>https://github.com/robinpowered/robin-java-sdk</url>
         <connection>scm:git:git://github.com/robinpowered/robin-java-sdk.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/robinpowered/robin-java-sdk.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>github</id>
+            <name>GitHub robinpowered Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/robinpowered/robin-java-sdk</url>
         </repository>
     </distributionManagement>
 
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>http://github.com/robinpowered/robin-java-sdk/issues</url>
+        <url>https://github.com/robinpowered/robin-java-sdk/issues</url>
     </issueManagement>
 
     <dependencies>
@@ -158,31 +155,7 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.3</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
-            </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

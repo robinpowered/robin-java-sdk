@@ -1,5 +1,5 @@
 # Robin Java SDK
-[![Build Status](https://travis-ci.org/robinpowered/robin-java-sdk.svg?branch=master)](https://travis-ci.org/robinpowered/robin-java-sdk)
+[![Robin SDK CI](https://github.com/robinpowered/robin-java-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/robinpowered/robin-java-sdk/actions/workflows/ci.yml)
 
 This README is a work in progress.
 
@@ -9,20 +9,43 @@ Full API documentation is available at [docs.robinpowered.com](http://docs.robin
 
 ## Download
 
-Using Maven:
+First, configure the repository in your `pom.xml`:
+
+```xml
+<repositories>
+  <repository>
+    <id>github</id>
+    <url>https://maven.pkg.github.com/robinpowered/robin-java-sdk</url>
+  </repository>
+</repositories>
+```
+
+Then, add the dependency:
 
 ```xml
 <dependency>
   <groupId>com.robinpowered</groupId>
   <artifactId>robin-java-sdk</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0-SNAPSHOT</version>
 </dependency>
 ```
 
 or using Gradle:
 
+First, configure the repository in your `build.gradle`:
 ```groovy
-compile 'com.robinpowered:robin-java-sdk:1.0.0'
+repositories {
+    maven {
+        url "https://maven.pkg.github.com/robinpowered/robin-java-sdk"
+    }
+}
+```
+
+Then, add the dependency:
+```groovy
+dependencies {
+    implementation 'com.robinpowered:robin-java-sdk:1.1.0-SNAPSHOT'
+}
 ```
 
 ## Compile locally
@@ -32,12 +55,7 @@ mvn clean package
 
 Locally compiled .jar file will be placed in the `target` directory.
 
-## Snapshots
 
-Snapshots are available from the
-[sonatype `snapshots` repository](https://oss.sonatype.org/content/repositories/snapshots/) 
-
-The jar is available for direct download [here](https://oss.sonatype.org/content/repositories/snapshots/com/robinpowered/robin-java-sdk/).
 
 ## Getting Started
 
